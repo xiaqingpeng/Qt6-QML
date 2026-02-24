@@ -10,6 +10,8 @@ Window {
 
     property string name: "Connections 劫持"
 
+    property int clickCount: 0
+
     Row {
 
         anchors.centerIn: parent
@@ -28,9 +30,10 @@ Window {
                 id: redRectId
                 anchors.fill: parent
 
-                // onClicked: {
-                //     console.log("这是一个红色的矩形")
-                // }
+                onClicked: {
+                    clickCount++
+                    console.log("红色矩形被点击，次数:", clickCount)
+                }
             }
         }
 
