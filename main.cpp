@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
  // engine.loadFromModule("demo", "demo1");
 
   // 改为
-  engine.load(QUrl(QStringLiteral("qrc:/qt/qml/demo/demo2.qml")));
+  engine.load(QUrl(QStringLiteral("qrc:/qt/qml/demo/demo3.qml")));
 
   return app.exec();
 }

@@ -15,7 +15,9 @@ qt_add_executable(appdemo
 qt_add_qml_module(appdemo
     URI demo
     QML_FILES
-    demo2.qml
+    # demo1.qml
+    # demo2.qml
+      demo3.qml
     # QML_FILES demo2.qml
 )
 

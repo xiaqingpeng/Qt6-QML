@@ -1,0 +1,68 @@
+import QtQuick
+
+Window {
+    id: window
+
+    width: 640
+    height: 480
+    visible: true
+    title: qsTr("Connections 劫持")
+
+    property string name: "Connections 劫持"
+
+    Row {
+
+        anchors.centerIn: parent
+
+        spacing: 20
+
+        Rectangle {
+            id: page1
+            width: 150
+            height: 150
+            color: 'red'
+
+            radius: 100
+
+            MouseArea {
+                id: redRectId
+                anchors.fill: parent
+
+                // onClicked: {
+                //     console.log("这是一个红色的矩形")
+                // }
+            }
+        }
+
+        Rectangle {
+            id: page2
+            width: 150
+            height: 150
+            color: 'green'
+
+            radius: 100
+            Connections {
+                target: redRectId
+                function onClicked() {
+                    console.log("这是一个绿色的矩形")
+                }
+            }
+        }
+
+        Rectangle {
+            id: page3
+            width: 150
+            height: 150
+            color: 'blue'
+
+            radius: 100
+            Connections {
+                target: redRectId
+
+                function onClicked() {
+                    console.log("这是一个蓝色的矩形")
+                }
+            }
+        }
+    }
+}
