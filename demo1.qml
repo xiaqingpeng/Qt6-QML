@@ -1,19 +1,12 @@
 import QtQuick
 
-Window {
-    id: window
-
-    width: 640
-    height: 480
-    visible: true
-    title: qsTr("Hello World")
+Item {
+    id: root
 
     property string name: "我是一个文本"
 
-
     Row {
-
-        anchors.centerIn:parent
+        anchors.centerIn: parent
 
         Rectangle {
             id: page1
@@ -24,17 +17,16 @@ Window {
             border.color: "cyan"
             border.width: 2
             radius: 100
+            
             MouseArea {
                 id: mouseArea1
                 anchors.fill: parent
 
                 onClicked: {
-                  console.log("打印了数据");
-                  parent.color = "black";  // 直接使用 Rectangle 的 id
-
+                    console.log("打印了数据")
+                    parent.color = "black"
                 }
             }
-
 
             Text {
                 anchors.centerIn: parent
@@ -43,7 +35,6 @@ Window {
                 font.pointSize: 16
             }
         }
-
 
         Rectangle {
             id: page2
@@ -54,27 +45,23 @@ Window {
             border.color: "cyan"
             border.width: 2
             radius: 100
+            
             MouseArea {
                 id: mouseArea2
                 anchors.fill: parent
 
                 onClicked: {
-                  console.log("打印了数据");
-                  parent.color = "purple";  // 直接使用 Rectangle 的 id
-
+                    console.log("打印了数据")
+                    parent.color = "purple"
                 }
             }
 
-
             Text {
                 anchors.centerIn: parent
-                text: name
+                text: root.name
                 color: "white"
                 font.pointSize: 16
             }
         }
-
     }
-
-
 }

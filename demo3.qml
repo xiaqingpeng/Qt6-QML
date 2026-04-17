@@ -1,21 +1,13 @@
 import QtQuick
 
-Window {
-    id: window
-
-    width: 640
-    height: 480
-    visible: true
-    title: qsTr("Connections 劫持")
+Item {
+    id: root
 
     property string name: "Connections 劫持"
-
     property int clickCount: 0
 
     Row {
-
         anchors.centerIn: parent
-
         spacing: 20
 
         Rectangle {
@@ -23,7 +15,6 @@ Window {
             width: 150
             height: 150
             color: 'red'
-
             radius: 100
 
             MouseArea {
@@ -31,8 +22,8 @@ Window {
                 anchors.fill: parent
 
                 onClicked: {
-                    clickCount++
-                    console.log("红色矩形被点击，次数:", clickCount)
+                    root.clickCount++
+                    console.log("红色矩形被点击，次数:", root.clickCount)
                 }
             }
         }
@@ -42,8 +33,8 @@ Window {
             width: 150
             height: 150
             color: 'green'
-
             radius: 100
+            
             Connections {
                 target: redRectId
                 function onClicked() {
@@ -57,11 +48,10 @@ Window {
             width: 150
             height: 150
             color: 'blue'
-
             radius: 100
+            
             Connections {
                 target: redRectId
-
                 function onClicked() {
                     console.log("这是一个蓝色的矩形")
                 }

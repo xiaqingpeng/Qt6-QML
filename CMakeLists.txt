@@ -15,10 +15,18 @@ qt_add_executable(appdemo
 qt_add_qml_module(appdemo
     URI demo
     QML_FILES
-    # demo1.qml
-    # demo2.qml
-      demo3.qml
-    # QML_FILES demo2.qml
+        Main.qml
+        Demo1.qml
+        Demo2.qml
+        Demo3.qml
+        Demo4.qml
+        Demo5.qml
+    SOURCES
+        Backend.h
+        Backend.cpp
+        DataModel.cpp
+        DataModel.h
+
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
