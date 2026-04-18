@@ -1,9 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QStringLiteral>
+#include <QQuickStyle>
 
 int main(int argc, char *argv[]) {
   qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+
+  // 设置 QML 样式为 Basic，支持自定义控件外观
+  QQuickStyle::setStyle("Basic");
 
   QGuiApplication app(argc, argv);
 

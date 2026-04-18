@@ -5,7 +5,7 @@ import demo
 Window {
     id: mainWindow
     width: 1280
-    height: 960
+    height: 1280
     visible: true
     title: "QML Demo 导航"
 
@@ -58,9 +58,15 @@ Window {
                 }
 
                 Button {
-                    text: "Demo 5 - 扩展示例"
+                    text: "Demo 5 - 布局示例"
                     width: 250
                     onClicked: stackView.push(demo5Page)
+                }
+
+                Button {
+                    text: "Demo 6 - 输入框示例"
+                    width: 250
+                    onClicked: stackView.push(demo6Page)
                 }
             }
         }
@@ -151,7 +157,7 @@ Window {
         id: demo5Page
         
         Page {
-            title: "Demo 5 - 扩展示例"
+            title: "Demo 5 - 布局示例"
             
             header: ToolBar {
                 Button {
@@ -161,6 +167,27 @@ Window {
             }
 
             Demo5 {
+                anchors.fill: parent
+            }
+        }
+    }
+
+
+    // Demo 6 - 扩展示例
+    Component {
+        id: demo6Page
+
+        Page {
+            title: "Demo 6 - 输入框示例"
+
+            header: ToolBar {
+                Button {
+                    text: "← 返回"
+                    onClicked: stackView.pop()
+                }
+            }
+
+            Demo6 {
                 anchors.fill: parent
             }
         }

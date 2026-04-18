@@ -4,7 +4,7 @@ project(demo VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -21,6 +21,7 @@ qt_add_qml_module(appdemo
         Demo3.qml
         Demo4.qml
         Demo5.qml
+        Demo6.qml
     SOURCES
         Backend.h
         Backend.cpp
@@ -41,7 +42,7 @@ set_target_properties(appdemo PROPERTIES
 )
 
 target_link_libraries(appdemo
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::QuickControls2
 )
 
 include(GNUInstallDirs)
