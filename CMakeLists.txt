@@ -16,6 +16,7 @@ qt_add_qml_module(appdemo
     URI demo
     QML_FILES
         Main.qml
+        DemoConfig.qml
         Demo1.qml
         Demo2.qml
         Demo3.qml

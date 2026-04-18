@@ -36,10 +36,15 @@ Item {
                     TextField {
                         id: searchField
                         width: parent.width
-                        height: 50
+                        height: 80
                         placeholderText: "搜索歌曲、歌手、专辑"
                         placeholderTextColor: "#999999"
                         font.pixelSize: 16
+
+                        verticalAlignment: TextInput.AlignVCenter
+                        // horizontalAlignment: Text.AlignHCenter
+
+                        leftPadding: 16
 
                         background: Rectangle {
                             color: '#ffffff'
@@ -48,7 +53,9 @@ Item {
                             border.width: 2
                         }
 
-                        onTextChanged: console.log("搜索:", text)
+                        onTextChanged: console.log("onTextChanged:", text)
+                        onFocusChanged: console.log("onFocusChanged:", text)
+                        onAccepted: console.log("onAccepted:", text)
                     }
                 }
 
@@ -96,7 +103,10 @@ Item {
                         width: parent.width
                         height: 50
                         placeholderText: "请输入数字"
-                        validator: IntValidator { bottom: 0; top: 9999 }
+                        validator: IntValidator {
+                            bottom: 0
+                            top: 9999
+                        }
                         inputMethodHints: Qt.ImhDigitsOnly
                         font.pixelSize: 16
 
@@ -222,7 +232,7 @@ Item {
                     TextArea {
                         id: textArea
                         width: parent.width
-                        height: 120
+                        implicitHeight: 120
                         placeholderText: "请输入多行文本..."
                         wrapMode: TextArea.Wrap
                         font.pixelSize: 16
@@ -262,6 +272,7 @@ Item {
                         }
 
                         Button {
+                            id: clearButton
                             anchors.right: parent.right
                             anchors.rightMargin: 10
                             anchors.verticalCenter: parent.verticalCenter
@@ -272,7 +283,7 @@ Item {
                             font.pixelSize: 20
 
                             background: Rectangle {
-                                color: parent.hovered ? "#e0e0e0" : "transparent"
+                                color: clearButton.hovered ? "#e0e0e0" : "transparent"
                                 radius: 15
                             }
 
@@ -282,7 +293,10 @@ Item {
                 }
 
                 // 底部间距
-                Item { height: 20 }
+                Item {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 20
+                }
             }
         }
     }
