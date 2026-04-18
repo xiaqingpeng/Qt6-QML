@@ -13,11 +13,13 @@ Item {
         color: '#f5f5f5'
 
         ScrollView {
+            id: scrollView
             anchors.fill: parent
             anchors.margins: 20
+            clip: true
 
             ColumnLayout {
-                width: parent.width - 40
+                width: scrollView.width - 40
                 spacing: 30
 
                 // 1. 基础搜索框

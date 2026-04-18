@@ -58,7 +58,7 @@ Window {
                 }
 
                 Button {
-                    text: "Demo 5 - 布局示例"
+                    text: "Demo 5 - 锚点布局示例"
                     width: 250
                     onClicked: stackView.push(demo5Page)
                 }
@@ -157,7 +157,7 @@ Window {
         id: demo5Page
         
         Page {
-            title: "Demo 5 - 布局示例"
+            title: "Demo 5 - 锚点布局示例"
             
             header: ToolBar {
                 Button {
