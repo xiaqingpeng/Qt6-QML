@@ -22,6 +22,11 @@ QtObject {
             "id": "demo4",
             "title": "Demo 4 - 输入框示例",
             "component": "Demo4"
+        },
+        {
+            "id": "demo5",
+            "title": "Demo 5 - 鼠标键盘事件",
+            "component": "Demo5"
         }
     ]
 }
