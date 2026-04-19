@@ -21,14 +21,13 @@ qt_add_qml_module(appdemo
         Demo2.qml
         Demo3.qml
         Demo4.qml
-        Demo5.qml
-        Demo6.qml
     SOURCES
         Backend.h
         Backend.cpp
         DataModel.cpp
         DataModel.h
-
+    RESOURCES
+        report.png
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

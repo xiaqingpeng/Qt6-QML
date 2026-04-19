@@ -1,66 +1,62 @@
 import QtQuick
+import QtQuick.Controls
+import demo
 
 Item {
     id: root
 
-    property string name: "QML Global Object"
-
-    Row {
+    Column {
         anchors.centerIn: parent
+        spacing: 20
+        width: 300
 
-        Rectangle {
-            id: page1
+        Text {
+            text: "Backend 单例示例"
+            font.pixelSize: 20
+            font.bold: true
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            text: "Counter: " + Backend.counter
+            font.pixelSize: 16
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Button {
+            text: "增加计数"
             width: 200
-            height: 200
-            color: 'pink'
-
-            border.color: "cyan"
-            border.width: 2
-            radius: 100
-            
-            MouseArea {
-                id: mouseArea1
-                anchors.fill: parent
-
-                onClicked: {
-                    console.log("打印了数据")
-                    parent.color = "black"
-                }
-            }
-
-            Text {
-                anchors.centerIn: parent
-                color: Qt.rgba(1, 0, 0, 1)
-                text: Qt.md5("hello, world")
-                font.pointSize: 6
-            }
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: Backend.increment()
         }
 
         Rectangle {
-            id: page2
-            width: 200
-            height: 200
-            color: 'pink'
+            width: parent.width
+            height: 1
+            color: "#cccccc"
+        }
 
-            border.color: "cyan"
-            border.width: 2
-            radius: 100
-            
-            MouseArea {
-                id: mouseArea2
-                anchors.fill: parent
+        Text {
+            text: "DataModel 列表示例"
+            font.pixelSize: 20
+            font.bold: true
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
 
-                onClicked: {
-                    console.log("打印当前平台", Qt.platform.os)
-                    Qt.quit()
+        ListView {
+            width: parent.width
+            height: 150
+            model: DataModel {}
+            delegate: Rectangle {
+                width: ListView.view.width
+                height: 40
+                color: index % 2 === 0 ? "#f0f0f0" : "#ffffff"
+                
+                Text {
+                    anchors.centerIn: parent
+                    text: "Name: " + itemName
+                    font.pixelSize: 14
                 }
-            }
-
-            Text {
-                anchors.centerIn: parent
-                color: Qt.rgba(1, 0, 0, 1)
-                text: Qt.md5("hello, world")
-                font.pointSize: 6
             }
         }
     }
