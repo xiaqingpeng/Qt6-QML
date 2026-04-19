@@ -20,5 +20,11 @@ int main(int argc, char *argv[]) {
   // 改为
   engine.load(QUrl(QStringLiteral("qrc:/qt/qml/demo/Main.qml")));
 
+  QList<QObject*> obj = engine.rootObjects();
+
+  qDebug()<< "list size is"<< obj.size();
+
+  qDebug()<< "list first is"<< obj.first();
+
   return app.exec();
 }
