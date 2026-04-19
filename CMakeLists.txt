@@ -22,6 +22,8 @@ qt_add_qml_module(appdemo
         Demo3.qml
         Demo4.qml
         Demo5.qml
+        Demo6.qml
+
     SOURCES
         Backend.h
         Backend.cpp
