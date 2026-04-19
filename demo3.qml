@@ -21,85 +21,57 @@ Item {
                 width: scrollView.width - 20
                 spacing: 30
 
-                // 示例1: 四角布局
+                // 示例1: 三栏布局（顶部+左侧+中间）
                 Rectangle {
                     width: parent.width
-                    height: 250
-                    color: '#e0e0e0'
+                    height: 500
+                    color: '#ffffff'
                     radius: 10
+                    border.color: '#e0e0e0'
+                    border.width: 1
 
                     Text {
                         anchors.top: parent.top
                         anchors.left: parent.left
                         anchors.margins: 10
-                        text: "示例1: 四角布局"
+                        text: "示例1: 三栏布局（顶部+左侧+中间）"
                         font.pixelSize: 18
                         font.bold: true
                     }
 
+                    // 顶部导航栏
                     Rectangle {
-                        id: topLeft
-                        width: 100
-                        height: 80
-                        anchors.left: parent.left
+                        id: topBar
+                        width: parent.width
+                        height: 60
                         anchors.top: parent.top
-                        anchors.margins: 40
-                        color: '#ff6b6b'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "左上"
-                            color: "white"
-                        }
-                    }
-
-                    Rectangle {
-                        width: 100
-                        height: 80
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        anchors.margins: 40
-                        color: '#4ecdc4'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "右上"
-                            color: "white"
-                        }
-                    }
-
-                    Rectangle {
-                        width: 100
-                        height: 80
+                        anchors.topMargin: 40
                         anchors.left: parent.left
-                        anchors.bottom: parent.bottom
-                        anchors.margins: 40
-                        color: '#95e1d3'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "左下"
-                            color: "white"
-                        }
+                        anchors.right: parent.right
+                        color: '#1976d2'
                     }
 
+                    // 左侧菜单
                     Rectangle {
-                        width: 100
-                        height: 80
-                        anchors.right: parent.right
+                        id: leftMenu
+                        width: 180
+                        anchors.top: topBar.bottom
                         anchors.bottom: parent.bottom
-                        anchors.margins: 40
-                        color: '#f38181'
-                        radius: 5
+                        anchors.left: parent.left
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: "右下"
-                            color: "white"
-                        }
+                        color: '#fafafa'
+                    }
+
+                    // 中间内容区
+                    Rectangle {
+                        id: mainArea
+                        anchors.top: topBar.bottom
+                        anchors.bottom: parent.bottom
+                        anchors.left: leftMenu.right
+                        anchors.right: parent.left
+                        anchors.margins: 10
+
+                        color: '#f5f5f7'
                     }
                 }
 
@@ -481,7 +453,7 @@ Item {
                         anchors.topMargin: 40
                         anchors.bottom: bottomPlayer.top
                         color: '#ccc'
-                        opacity:0.1
+                        opacity: 0.1
                     }
 
                     // 底部播放器
