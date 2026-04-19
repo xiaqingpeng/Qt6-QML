@@ -514,10 +514,3 @@ MIT License
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 开启 Pull Request
 
-## 致谢
-
-感谢 Qt 社区的支持和贡献。
-
-## 联系方式
-
-如有问题或建议，请提交 Issue。

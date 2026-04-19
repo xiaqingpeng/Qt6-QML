@@ -6,8 +6,8 @@ import demo
 
 Window {
     id: mainWindow
-    width: 1280
-    height: 1280
+    width: 960
+    height: 720
     visible: true
     title: "QML Demo 导航"
 
