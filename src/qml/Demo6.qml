@@ -22,8 +22,9 @@ Item {
 
                 // 示例1: Button 按钮
                 Rectangle {
+                    id: button
                     width: parent.width
-                    height: 220
+                    height: 280
                     color: '#ffffff'
                     radius: 10
                     border.color: '#e0e0e0'
@@ -65,31 +66,68 @@ Item {
                                 flat: true
                                 onClicked: console.log("扁平按钮")
                             }
-                        }
 
-                        Column {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            spacing: 10
+                            Column {
 
-                            DelayButton {
-                                text: "延迟按钮 (长按2秒)"
-                                delay: 2000
-                                onActivated: {
-                                    console.log("延迟按钮被激活")
+                                spacing: 10
+
+                                Text {
+                                    text: "RadioButton（单选）"
+                                    font.pixelSize: 14
+                                    font.bold: true
+                                }
+
+                                ButtonGroup {
+                                    id: radioGroup
+                                }
+
+                                RadioButton {
+                                    text: "选项 A"
+                                    checked: true
+                                    ButtonGroup.group: radioGroup
+                                    onCheckedChanged: if (checked)
+                                                          console.log("选择了 A")
+                                }
+
+                                RadioButton {
+                                    text: "选项 B"
+                                    ButtonGroup.group: radioGroup
+                                    onCheckedChanged: if (checked)
+                                                          console.log("选择了 B")
+                                }
+
+                                RadioButton {
+                                    text: "选项 C"
+                                    ButtonGroup.group: radioGroup
+                                    onCheckedChanged: if (checked)
+                                                          console.log("选择了 C")
                                 }
                             }
 
-                            Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                text: "长按按钮直到进度条填满才会触发"
-                                font.pixelSize: 11
-                                color: "#666666"
+                            Column {
+
+                                spacing: 10
+
+                                DelayButton {
+                                    text: "延迟按钮 (长按2秒)"
+                                    delay: 2000
+                                    onActivated: {
+                                        console.log("延迟按钮被激活");
+                                    }
+                                }
+
+                                Text {
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    text: "长按按钮直到进度条填满才会触发"
+                                    font.pixelSize: 11
+                                    color: "#666666"
+                                }
                             }
                         }
                     }
                 }
 
-                // 示例2: CheckBox 和 RadioButton
+                // 示例2: CheckBox
                 Rectangle {
                     width: parent.width
                     height: 280
@@ -104,7 +142,7 @@ Item {
                         spacing: 20
 
                         Text {
-                            text: "示例2: CheckBox 和 RadioButton"
+                            text: "示例2: CheckBox"
                             font.pixelSize: 18
                             font.bold: true
                         }
@@ -113,70 +151,37 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             spacing: 50
 
-                        Column {
-                            spacing: 10
+                            Column {
+                                spacing: 10
 
-                            Text {
-                                text: "CheckBox（多选）"
-                                font.pixelSize: 14
-                                font.bold: true
-                            }
+                                Text {
+                                    text: "CheckBox（多选）"
+                                    font.pixelSize: 14
+                                    font.bold: true
+                                }
 
-                            CheckBox {
-                                text: "选项 1"
-                                checked: true
-                                onCheckedChanged: console.log("选项1:", checked)
-                            }
+                                CheckBox {
+                                    text: "选项 1"
+                                    checked: true
+                                    onCheckedChanged: console.log("选项1:", checked)
+                                }
 
-                            CheckBox {
-                                text: "选项 2"
-                                onCheckedChanged: console.log("选项2:", checked)
-                            }
+                                CheckBox {
+                                    text: "选项 2"
+                                    onCheckedChanged: console.log("选项2:", checked)
+                                }
 
-                            CheckBox {
-                                text: "选项 3"
-                                onCheckedChanged: console.log("选项3:", checked)
-                            }
+                                CheckBox {
+                                    text: "选项 3"
+                                    onCheckedChanged: console.log("选项3:", checked)
+                                }
 
-                            CheckBox {
-                                text: "禁用选项"
-                                enabled: false
-                            }
-                        }
-
-                        Column {
-                            spacing: 10
-
-                            Text {
-                                text: "RadioButton（单选）"
-                                font.pixelSize: 14
-                                font.bold: true
-                            }
-
-                            ButtonGroup {
-                                id: radioGroup
-                            }
-
-                            RadioButton {
-                                text: "选项 A"
-                                checked: true
-                                ButtonGroup.group: radioGroup
-                                onCheckedChanged: if(checked) console.log("选择了 A")
-                            }
-
-                            RadioButton {
-                                text: "选项 B"
-                                ButtonGroup.group: radioGroup
-                                onCheckedChanged: if(checked) console.log("选择了 B")
-                            }
-
-                            RadioButton {
-                                text: "选项 C"
-                                ButtonGroup.group: radioGroup
-                                onCheckedChanged: if(checked) console.log("选择了 C")
+                                CheckBox {
+                                    text: "禁用选项"
+                                    enabled: false
+                                }
                             }
                         }
-                    }
                     }
                 }
 
@@ -204,62 +209,62 @@ Item {
                             width: parent.width
                             spacing: 30
 
-                        Column {
-                            width: parent.width
-                            spacing: 10
+                            Column {
+                                width: parent.width
+                                spacing: 10
 
-                            Text {
-                                text: "Slider 滑块: " + slider1.value.toFixed(1)
-                                font.pixelSize: 14
+                                Text {
+                                    text: "Slider 滑块: " + slider1.value.toFixed(1)
+                                    font.pixelSize: 14
+                                }
+
+                                Slider {
+                                    id: slider1
+                                    width: parent.width
+                                    from: 0
+                                    to: 100
+                                    value: 50
+                                    onValueChanged: console.log("Slider值:", value)
+                                }
                             }
 
-                            Slider {
-                                id: slider1
+                            Column {
                                 width: parent.width
-                                from: 0
-                                to: 100
-                                value: 50
-                                onValueChanged: console.log("Slider值:", value)
+                                spacing: 10
+
+                                Text {
+                                    text: "步进 Slider: " + slider2.value
+                                    font.pixelSize: 14
+                                }
+
+                                Slider {
+                                    id: slider2
+                                    width: parent.width
+                                    from: 0
+                                    to: 10
+                                    stepSize: 1
+                                    value: 5
+                                    snapMode: Slider.SnapAlways
+                                }
+                            }
+
+                            Column {
+                                width: parent.width
+                                spacing: 10
+
+                                Text {
+                                    text: "ProgressBar 进度条: " + Math.round(slider1.value) + "%"
+                                    font.pixelSize: 14
+                                }
+
+                                ProgressBar {
+                                    width: parent.width
+                                    from: 0
+                                    to: 100
+                                    value: slider1.value
+                                }
                             }
                         }
-
-                        Column {
-                            width: parent.width
-                            spacing: 10
-
-                            Text {
-                                text: "步进 Slider: " + slider2.value
-                                font.pixelSize: 14
-                            }
-
-                            Slider {
-                                id: slider2
-                                width: parent.width
-                                from: 0
-                                to: 10
-                                stepSize: 1
-                                value: 5
-                                snapMode: Slider.SnapAlways
-                            }
-                        }
-
-                        Column {
-                            width: parent.width
-                            spacing: 10
-
-                            Text {
-                                text: "ProgressBar 进度条: " + Math.round(slider1.value) + "%"
-                                font.pixelSize: 14
-                            }
-
-                            ProgressBar {
-                                width: parent.width
-                                from: 0
-                                to: 100
-                                value: slider1.value
-                            }
-                        }
-                    }
                     }
                 }
 
@@ -287,81 +292,81 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             spacing: 50
 
-                        Column {
-                            spacing: 15
+                            Column {
+                                spacing: 15
 
-                            Row {
-                                spacing: 10
+                                Row {
+                                    spacing: 10
 
-                                Switch {
-                                    id: switch1
-                                    checked: true
-                                    onCheckedChanged: console.log("开关1:", checked)
+                                    Switch {
+                                        id: switch1
+                                        checked: true
+                                        onCheckedChanged: console.log("开关1:", checked)
+                                    }
+
+                                    Text {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: switch1.checked ? "开启" : "关闭"
+                                        font.pixelSize: 14
+                                    }
                                 }
 
-                                Text {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    text: switch1.checked ? "开启" : "关闭"
-                                    font.pixelSize: 14
+                                Row {
+                                    spacing: 10
+
+                                    Switch {
+                                        id: switch2
+                                        onCheckedChanged: console.log("开关2:", checked)
+                                    }
+
+                                    Text {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: "通知"
+                                        font.pixelSize: 14
+                                    }
+                                }
+
+                                Row {
+                                    spacing: 10
+
+                                    Switch {
+                                        enabled: false
+                                    }
+
+                                    Text {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: "禁用开关"
+                                        font.pixelSize: 14
+                                        color: "#999999"
+                                    }
                                 }
                             }
 
-                            Row {
-                                spacing: 10
-
-                                Switch {
-                                    id: switch2
-                                    onCheckedChanged: console.log("开关2:", checked)
-                                }
+                            Column {
+                                spacing: 15
 
                                 Text {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    text: "通知"
+                                    text: "SpinBox 数字输入"
                                     font.pixelSize: 14
-                                }
-                            }
-
-                            Row {
-                                spacing: 10
-
-                                Switch {
-                                    enabled: false
+                                    font.bold: true
                                 }
 
-                                Text {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    text: "禁用开关"
-                                    font.pixelSize: 14
-                                    color: "#999999"
+                                SpinBox {
+                                    id: spinBox1
+                                    from: 0
+                                    to: 100
+                                    value: 50
+                                    onValueChanged: console.log("SpinBox值:", value)
+                                }
+
+                                SpinBox {
+                                    from: 0
+                                    to: 10
+                                    stepSize: 2
+                                    value: 4
                                 }
                             }
                         }
-
-                        Column {
-                            spacing: 15
-
-                            Text {
-                                text: "SpinBox 数字输入"
-                                font.pixelSize: 14
-                                font.bold: true
-                            }
-
-                            SpinBox {
-                                id: spinBox1
-                                from: 0
-                                to: 100
-                                value: 50
-                                onValueChanged: console.log("SpinBox值:", value)
-                            }
-
-                            SpinBox {
-                                from: 0
-                                to: 10
-                                stepSize: 2
-                                value: 4
-                            }
-                        }
-                    }
                     }
                 }
 
@@ -389,54 +394,54 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             spacing: 30
 
-                        Column {
-                            spacing: 10
+                            Column {
+                                spacing: 10
 
-                            Text {
-                                text: "基础下拉框"
-                                font.pixelSize: 14
+                                Text {
+                                    text: "基础下拉框"
+                                    font.pixelSize: 14
+                                }
+
+                                ComboBox {
+                                    id: comboBox1
+                                    width: 200
+                                    model: ["选项 1", "选项 2", "选项 3", "选项 4"]
+                                    onCurrentIndexChanged: console.log("选择:", currentText)
+                                }
                             }
 
-                            ComboBox {
-                                id: comboBox1
-                                width: 200
-                                model: ["选项 1", "选项 2", "选项 3", "选项 4"]
-                                onCurrentIndexChanged: console.log("选择:", currentText)
+                            Column {
+                                spacing: 10
+
+                                Text {
+                                    text: "可编辑下拉框"
+                                    font.pixelSize: 14
+                                }
+
+                                ComboBox {
+                                    width: 200
+                                    editable: true
+                                    model: ["北京", "上海", "广州", "深圳"]
+                                    onAccepted: console.log("输入:", editText)
+                                }
+                            }
+
+                            Column {
+                                spacing: 10
+
+                                Text {
+                                    text: "当前选择: " + comboBox1.currentText
+                                    font.pixelSize: 12
+                                    color: "#666666"
+                                }
+
+                                Text {
+                                    text: "索引: " + comboBox1.currentIndex
+                                    font.pixelSize: 12
+                                    color: "#666666"
+                                }
                             }
                         }
-
-                        Column {
-                            spacing: 10
-
-                            Text {
-                                text: "可编辑下拉框"
-                                font.pixelSize: 14
-                            }
-
-                            ComboBox {
-                                width: 200
-                                editable: true
-                                model: ["北京", "上海", "广州", "深圳"]
-                                onAccepted: console.log("输入:", editText)
-                            }
-                        }
-
-                        Column {
-                            spacing: 10
-
-                            Text {
-                                text: "当前选择: " + comboBox1.currentText
-                                font.pixelSize: 12
-                                color: "#666666"
-                            }
-
-                            Text {
-                                text: "索引: " + comboBox1.currentIndex
-                                font.pixelSize: 12
-                                color: "#666666"
-                            }
-                        }
-                    }
                     }
                 }
 
@@ -464,32 +469,32 @@ Item {
                             width: parent.width
                             spacing: 15
 
-                        TextField {
-                            width: parent.width
-                            placeholderText: "普通输入框"
-                            onTextChanged: console.log("输入:", text)
-                        }
+                            TextField {
+                                width: parent.width
+                                placeholderText: "普通输入框"
+                                onTextChanged: console.log("输入:", text)
+                            }
 
-                        TextField {
-                            width: parent.width
-                            placeholderText: "密码输入框"
-                            echoMode: TextInput.Password
-                        }
+                            TextField {
+                                width: parent.width
+                                placeholderText: "密码输入框"
+                                echoMode: TextInput.Password
+                            }
 
-                        TextField {
-                            width: parent.width
-                            placeholderText: "只读输入框"
-                            text: "不可编辑"
-                            readOnly: true
-                        }
+                            TextField {
+                                width: parent.width
+                                placeholderText: "只读输入框"
+                                text: "不可编辑"
+                                readOnly: true
+                            }
 
-                        TextArea {
-                            width: parent.width
-                            height: 100
-                            placeholderText: "多行文本输入框..."
-                            wrapMode: TextArea.Wrap
+                            TextArea {
+                                width: parent.width
+                                height: 100
+                                placeholderText: "多行文本输入框..."
+                                wrapMode: TextArea.Wrap
+                            }
                         }
-                    }
                     }
                 }
 
@@ -517,30 +522,30 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             spacing: 20
 
-                        Label {
-                            text: "这是一个 Label 标签"
-                            font.pixelSize: 14
-                        }
+                            Label {
+                                text: "这是一个 Label 标签"
+                                font.pixelSize: 14
+                            }
 
-                        Label {
-                            text: "粗体 Label"
-                            font.pixelSize: 14
-                            font.bold: true
-                        }
+                            Label {
+                                text: "粗体 Label"
+                                font.pixelSize: 14
+                                font.bold: true
+                            }
 
-                        Label {
-                            text: "彩色 Label"
-                            font.pixelSize: 14
-                            color: "#e74c3c"
-                        }
+                            Label {
+                                text: "彩色 Label"
+                                font.pixelSize: 14
+                                color: "#e74c3c"
+                            }
 
-                        Button {
-                            text: "悬停显示提示"
-                            ToolTip.visible: hovered
-                            ToolTip.text: "这是一个工具提示\n可以显示多行文本"
-                            ToolTip.delay: 500
+                            Button {
+                                text: "悬停显示提示"
+                                ToolTip.visible: hovered
+                                ToolTip.text: "这是一个工具提示\n可以显示多行文本"
+                                ToolTip.delay: 500
+                            }
                         }
-                    }
                     }
                 }
 
@@ -568,40 +573,40 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             spacing: 50
 
-                        Column {
-                            spacing: 10
+                            Column {
+                                spacing: 10
 
-                            BusyIndicator {
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                running: true
+                                BusyIndicator {
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    running: true
+                                }
+
+                                Text {
+                                    text: "加载中..."
+                                    font.pixelSize: 12
+                                    color: "#666666"
+                                }
                             }
 
-                            Text {
-                                text: "加载中..."
-                                font.pixelSize: 12
-                                color: "#666666"
+                            Column {
+                                spacing: 10
+
+                                Dial {
+                                    id: dial
+                                    from: 0
+                                    to: 100
+                                    value: 30
+                                    onValueChanged: console.log("Dial值:", value)
+                                }
+
+                                Text {
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    text: "旋钮: " + Math.round(dial.value)
+                                    font.pixelSize: 12
+                                    color: "#666666"
+                                }
                             }
                         }
-
-                        Column {
-                            spacing: 10
-
-                            Dial {
-                                id: dial
-                                from: 0
-                                to: 100
-                                value: 30
-                                onValueChanged: console.log("Dial值:", value)
-                            }
-
-                            Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                text: "旋钮: " + Math.round(dial.value)
-                                font.pixelSize: 12
-                                color: "#666666"
-                            }
-                        }
-                    }
                     }
                 }
 
@@ -936,9 +941,9 @@ Item {
                         }
 
                         onAccepted: {
-                            console.log("登录:", usernameField.text)
-                            usernameField.text = ""
-                            passwordField.text = ""
+                            console.log("登录:", usernameField.text);
+                            usernameField.text = "";
+                            passwordField.text = "";
                         }
                     }
 
@@ -949,10 +954,10 @@ Item {
                         fileMode: FileDialog.OpenFile
                         nameFilters: ["图片文件 (*.png *.jpg *.jpeg)", "所有文件 (*)"]
                         onAccepted: {
-                            console.log("选择的文件:", fileDialog.selectedFile)
+                            console.log("选择的文件:", fileDialog.selectedFile);
                         }
                         onRejected: {
-                            console.log("取消选择文件")
+                            console.log("取消选择文件");
                         }
                     }
 
@@ -963,13 +968,13 @@ Item {
                         fileMode: FileDialog.OpenFiles
                         nameFilters: ["图片文件 (*.png *.jpg *.jpeg)", "文本文件 (*.txt)", "所有文件 (*)"]
                         onAccepted: {
-                            console.log("选择的文件数量:",multiFileDialog.selectedFiles, multiFileDialog.selectedFiles.length)
+                            console.log("选择的文件数量:", multiFileDialog.selectedFiles, multiFileDialog.selectedFiles.length);
                             for (var i = 0; i < multiFileDialog.selectedFiles.length; i++) {
-                                console.log("文件" + (i+1) + ":", multiFileDialog.selectedFiles[i])
+                                console.log("文件" + (i + 1) + ":", multiFileDialog.selectedFiles[i]);
                             }
                         }
                         onRejected: {
-                            console.log("取消选择文件")
+                            console.log("取消选择文件");
                         }
                     }
 
@@ -978,10 +983,10 @@ Item {
                         id: folderDialog
                         title: "请选择文件夹"
                         onAccepted: {
-                            console.log("选择的文件夹:", folderDialog.selectedFolder)
+                            console.log("选择的文件夹:", folderDialog.selectedFolder);
                         }
                         onRejected: {
-                            console.log("取消选择文件夹")
+                            console.log("取消选择文件夹");
                         }
                     }
 
@@ -990,10 +995,10 @@ Item {
                         id: colorDialog
                         title: "请选择颜色"
                         onAccepted: {
-                            console.log("选择的颜色:", colorDialog.selectedColor)
+                            console.log("选择的颜色:", colorDialog.selectedColor);
                         }
                         onRejected: {
-                            console.log("取消选择颜色")
+                            console.log("取消选择颜色");
                         }
                     }
 
@@ -1002,11 +1007,10 @@ Item {
                         id: fontDialog
                         title: "请选择字体"
                         onAccepted: {
-                            console.log("选择的字体:", fontDialog.selectedFont.family, 
-                                       "大小:", fontDialog.selectedFont.pointSize)
+                            console.log("选择的字体:", fontDialog.selectedFont.family, "大小:", fontDialog.selectedFont.pointSize);
                         }
                         onRejected: {
-                            console.log("取消选择字体")
+                            console.log("取消选择字体");
                         }
                     }
 
@@ -1066,7 +1070,7 @@ Item {
 
                     Menu {
                         id: contextMenu
-                        
+
                         MenuItem {
                             text: "复制"
                             onTriggered: console.log("复制")
@@ -1075,7 +1079,7 @@ Item {
                             text: "粘贴"
                             onTriggered: console.log("粘贴")
                         }
-                        MenuSeparator { }
+                        MenuSeparator {}
                         MenuItem {
                             text: "删除"
                             onTriggered: console.log("删除")
@@ -1084,7 +1088,7 @@ Item {
 
                     Menu {
                         id: fileMenu
-                        
+
                         MenuItem {
                             text: "新建"
                             onTriggered: console.log("新建文件")
@@ -1097,7 +1101,7 @@ Item {
                             text: "保存"
                             onTriggered: console.log("保存文件")
                         }
-                        MenuSeparator { }
+                        MenuSeparator {}
                         MenuItem {
                             text: "退出"
                             onTriggered: console.log("退出应用")
@@ -1108,7 +1112,7 @@ Item {
                         id: editMenu
                         x: menuButton.x
                         y: menuButton.y + menuButton.height
-                        
+
                         MenuItem {
                             text: "撤销"
                             enabled: false
@@ -1117,7 +1121,7 @@ Item {
                             text: "重做"
                             enabled: false
                         }
-                        MenuSeparator { }
+                        MenuSeparator {}
                         Menu {
                             title: "更多选项"
                             MenuItem {
@@ -1333,7 +1337,9 @@ Item {
                 }
 
                 // 底部间距
-                Item { height: 20 }
+                Item {
+                    height: 20
+                }
             }
         }
     }
