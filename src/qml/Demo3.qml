@@ -3,11 +3,9 @@ import QtQuick.Controls
 
 Item {
     id: root
-
-    property string name: "Demo 5 锚点布局示例"
+    property string name: "Demo 3 - 锚点布局示例"
 
     Rectangle {
-        id: main
         anchors.fill: parent
         color: '#f5f5f5'
 
@@ -22,456 +20,47 @@ Item {
                 spacing: 30
 
                 // 示例1: 三栏布局（顶部+左侧+中间）
-                Rectangle {
-                    width: parent.width
-                    height: 500
-                    color: '#ffffff'
-                    radius: 10
-                    border.color: '#e0e0e0'
-                    border.width: 1
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例1: 三栏布局（顶部+左侧+中间）"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    // 顶部导航栏
-                    Rectangle {
-                        id: topBar
-                        width: parent.width
-                        height: 60
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        color: '#1976d2'
-                    }
-
-                    // 左侧菜单
-                    Rectangle {
-                        id: leftMenu
-                        width: 180
-                        anchors.top: topBar.bottom
-                        anchors.bottom: parent.bottom
-                        anchors.left: parent.left
-
-                        color: '#fafafa'
-                    }
-
-                    // 中间内容区
-                    Rectangle {
-                        id: mainArea
-                        anchors.top: topBar.bottom
-                        anchors.bottom: parent.bottom
-                        anchors.left: leftMenu.right
-                        anchors.right: parent.left
-                        anchors.margins: 10
-
-                        color: '#f5f5f7'
-                    }
+                MyThreeColumnLayout {
+                    id: threeColumnLayout
                 }
 
                 // 示例2: 居中布局
-                Rectangle {
-                    width: parent.width
-                    height: 200
-                    color: '#e0e0e0'
-                    radius: 10
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例2: 居中布局"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    Rectangle {
-                        width: 150
-                        height: 100
-                        anchors.centerIn: parent
-                        color: '#6c5ce7'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "完全居中"
-                            color: "white"
-                            font.pixelSize: 16
-                        }
-                    }
-
-                    Rectangle {
-                        width: 80
-                        height: 40
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        color: '#a29bfe'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "水平居中"
-                            color: "white"
-                            font.pixelSize: 12
-                        }
-                    }
-
-                    Rectangle {
-                        width: 80
-                        height: 40
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: parent.left
-                        anchors.leftMargin: 20
-                        color: '#fd79a8'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "垂直居中"
-                            color: "white"
-                            font.pixelSize: 12
-                        }
-                    }
+                MyCenterLayout {
+                    id: centerLayout
                 }
 
                 // 示例3: 填充布局
-                Rectangle {
-                    width: parent.width
-                    height: 200
-                    color: '#e0e0e0'
-                    radius: 10
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例3: 填充布局"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: 40
-                        color: '#00b894'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "填充父元素 (带边距)"
-                            color: "white"
-                            font.pixelSize: 16
-                        }
-                    }
+                MyFillLayout {
+                    id: fillLayout
                 }
 
                 // 示例4: 相对定位
-                Rectangle {
-                    width: parent.width
-                    height: 200
-                    color: '#e0e0e0'
-                    radius: 10
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例4: 相对定位"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    Rectangle {
-                        id: refBox
-                        width: 100
-                        height: 80
-                        anchors.centerIn: parent
-                        color: '#0984e3'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "参考元素"
-                            color: "white"
-                        }
-                    }
-
-                    Rectangle {
-                        width: 80
-                        height: 60
-                        anchors.left: refBox.right
-                        anchors.leftMargin: 10
-                        anchors.verticalCenter: refBox.verticalCenter
-                        color: '#74b9ff'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "右侧"
-                            color: "white"
-                        }
-                    }
-
-                    Rectangle {
-                        width: 80
-                        height: 60
-                        anchors.right: refBox.left
-                        anchors.rightMargin: 10
-                        anchors.verticalCenter: refBox.verticalCenter
-                        color: '#74b9ff'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "左侧"
-                            color: "white"
-                        }
-                    }
-
-                    Rectangle {
-                        width: 80
-                        height: 50
-                        anchors.top: refBox.bottom
-                        anchors.topMargin: 10
-                        anchors.horizontalCenter: refBox.horizontalCenter
-                        color: '#74b9ff'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "下方"
-                            color: "white"
-                        }
-                    }
+                MyRelativeLayout {
+                    id: relativeLayout
                 }
 
                 // 示例5: 顶部工具栏 + 内容区
-                Rectangle {
-                    width: parent.width
-                    height: 250
-                    color: '#e0e0e0'
-                    radius: 10
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例5: 顶部工具栏 + 内容区"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    Rectangle {
-                        id: toolbar
-                        width: parent.width
-                        height: 60
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        color: '#2d3436'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "工具栏"
-                            color: "white"
-                            font.pixelSize: 16
-                        }
-                    }
-
-                    Rectangle {
-                        anchors.top: toolbar.bottom
-                        anchors.bottom: parent.bottom
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.margins: 10
-                        color: '#dfe6e9'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "内容区域"
-                            color: "#2d3436"
-                            font.pixelSize: 16
-                        }
-                    }
+                MyToolbarLayout {
+                    id: toolbarLayout
                 }
 
                 // 示例6: 侧边栏布局
-                Rectangle {
-                    width: parent.width
-                    height: 250
-                    color: '#e0e0e0'
-                    radius: 10
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例6: 侧边栏布局"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    Rectangle {
-                        id: sidebar
-                        width: 120
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 10
-                        anchors.left: parent.left
-                        anchors.leftMargin: 10
-                        color: '#636e72'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "侧边栏"
-                            color: "white"
-                            font.pixelSize: 14
-                        }
-                    }
-
-                    Rectangle {
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 10
-                        anchors.left: sidebar.right
-                        anchors.leftMargin: 10
-                        anchors.right: parent.right
-                        anchors.rightMargin: 10
-                        color: '#b2bec3'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "主内容区"
-                            color: "#2d3436"
-                            font.pixelSize: 16
-                        }
-                    }
+                MySidebarLayout {
+                    id: sidebarLayout
                 }
 
                 // 示例7: 底部固定按钮
-                Rectangle {
-                    width: parent.width
-                    height: 200
-                    color: '#e0e0e0'
-                    radius: 10
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例7: 底部固定按钮"
-                        font.pixelSize: 18
-                        font.bold: true
-                    }
-
-                    Rectangle {
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.bottom: bottomButton.top
-                        anchors.margins: 10
-                        color: '#ffeaa7'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "滚动内容区"
-                            color: "#2d3436"
-                        }
-                    }
-
-                    Rectangle {
-                        id: bottomButton
-                        width: parent.width - 20
-                        height: 50
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 10
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        color: '#e17055'
-                        radius: 5
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "底部固定按钮"
-                            color: "white"
-                            font.pixelSize: 16
-                        }
-                    }
+                MyBottomButtonLayout {
+                    id: bottomButtonLayout
                 }
 
                 // 示例8: 网易云音乐三栏布局
-                Rectangle {
-                    width: parent.width
-                    height: 500
-                    color: '#ffffff'
-                    radius: 10
-                    border.color: '#e0e0e0'
-                    border.width: 1
-
-                    Text {
-                        anchors.top: parent.top
-                        anchors.left: parent.left
-                        anchors.margins: 10
-                        text: "示例8: 网易云音乐三栏布局"
-                        font.pixelSize: 18
-                        font.bold: true
-                        color: '#333333'
-                    }
-
-                    // 左侧导航栏
-                    Rectangle {
-                        id: leftNav
-                        width: 180
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.bottom: bottomPlayer.top
-                        color: '#f5f5f7'
-                    }
-
-                    // 中间内容区
-                    Rectangle {
-                        id: mainContent
-                        anchors.left: leftNav.right
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        anchors.topMargin: 40
-                        anchors.bottom: bottomPlayer.top
-                        color: '#ccc'
-                        opacity: 0.1
-                    }
-
-                    // 底部播放器
-                    Rectangle {
-                        id: bottomPlayer
-                        width: parent.width
-                        height: 70
-                        anchors.bottom: parent.bottom
-                        color: '#f0f0f0'
-                        border.color: '#e0e0e0'
-                        border.width: 1
-                    }
+                MyMusicLayout {
+                    id: musicLayout
                 }
 
                 // 底部间距
-                Item {
-                    height: 20
-                }
+                Item { height: 20 }
             }
         }
     }

@@ -23,6 +23,22 @@ qt_add_qml_module(appdemo
         src/qml/Demo4.qml
         src/qml/Demo5.qml
         src/qml/Demo6.qml
+        src/qml/component/demo3/MyThreeColumnLayout.qml
+        src/qml/component/demo3/MyCenterLayout.qml
+        src/qml/component/demo3/MyFillLayout.qml
+        src/qml/component/demo3/MyRelativeLayout.qml
+        src/qml/component/demo3/MyToolbarLayout.qml
+        src/qml/component/demo3/MySidebarLayout.qml
+        src/qml/component/demo3/MyBottomButtonLayout.qml
+        src/qml/component/demo3/MyMusicLayout.qml
+        src/qml/component/demo4/MySearchField.qml
+        src/qml/component/demo4/MyPasswordField.qml
+        src/qml/component/demo4/MyNumberField.qml
+        src/qml/component/demo4/MyEmailField.qml
+        src/qml/component/demo4/MyReadOnlyField.qml
+        src/qml/component/demo4/MyLimitedField.qml
+        src/qml/component/demo4/MyTextAreaField.qml
+        src/qml/component/demo4/MyClearableField.qml
         src/qml/component/demo5/MyClickEvent.qml
         src/qml/component/demo5/MyHoverAndPress.qml
         src/qml/component/demo5/MyDragEvent.qml
@@ -41,8 +57,6 @@ qt_add_qml_module(appdemo
         src/qml/component/demo6/MyDialog.qml
         src/qml/component/demo6/MyMenu.qml
         src/qml/component/demo6/MyCard.qml
-        src/qml/component/demo6/MySliderAndProgressBar.qml
-        src/qml/component/demo6/MySwitchAndSpinBox.qml
 
     SOURCES
         Backend.h
