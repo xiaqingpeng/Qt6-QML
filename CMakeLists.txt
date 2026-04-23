@@ -23,6 +23,20 @@ qt_add_qml_module(appdemo
         src/qml/Demo4.qml
         src/qml/Demo5.qml
         src/qml/Demo6.qml
+        src/qml/component/demo6/MyButton.qml
+        src/qml/component/demo6/MyCheckBox.qml
+        src/qml/component/demo6/MySliderAndProgressBar.qml
+        src/qml/component/demo6/MySwitchAndSpinBox.qml
+        src/qml/component/demo6/MyComboBox.qml
+        src/qml/component/demo6/MyTextInput.qml
+        src/qml/component/demo6/MyLabelAndToolTip.qml
+        src/qml/component/demo6/MyBusyAndDial.qml
+        src/qml/component/demo6/MyPopup.qml
+        src/qml/component/demo6/MyDialog.qml
+        src/qml/component/demo6/MyMenu.qml
+        src/qml/component/demo6/MyCard.qml
+        src/qml/component/demo6/MySliderAndProgressBar.qml
+        src/qml/component/demo6/MySwitchAndSpinBox.qml
 
     SOURCES
         Backend.h
