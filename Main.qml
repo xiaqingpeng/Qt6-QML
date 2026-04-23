@@ -96,7 +96,7 @@ Window {
 
             Loader {
                 anchors.fill: parent
-                source: "qrc:/qt/qml/demo/" + demoPage.demoComponent + ".qml"
+                source: "qrc:/qt/qml/demo/src/qml/" + demoPage.demoComponent + ".qml"
                 onStatusChanged: {
                     if (status === Loader.Error) {
                         console.error("Failed to load:", demoPage.demoComponent)
