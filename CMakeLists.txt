@@ -23,6 +23,12 @@ qt_add_qml_module(appdemo
         src/qml/Demo4.qml
         src/qml/Demo5.qml
         src/qml/Demo6.qml
+        src/qml/component/demo5/MyClickEvent.qml
+        src/qml/component/demo5/MyHoverAndPress.qml
+        src/qml/component/demo5/MyDragEvent.qml
+        src/qml/component/demo5/MyKeyboardEvent.qml
+        src/qml/component/demo5/MyWheelEvent.qml
+        src/qml/component/demo5/MyComboEvent.qml
         src/qml/component/demo6/MyButton.qml
         src/qml/component/demo6/MyCheckBox.qml
         src/qml/component/demo6/MySliderAndProgressBar.qml
