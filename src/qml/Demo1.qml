@@ -112,7 +112,7 @@ Item {
                                 anchors.centerIn: parent
                                 width: 200
                                 height: 200
-                                source: "report.png"
+                                source: "qrc:/qt/qml/demo/report.png"
                                 fillMode: Image.PreserveAspectFit
 
                                 onStatusChanged: {
@@ -214,6 +214,7 @@ Item {
 
                 // Tab 3: Connections 信号劫持
                 Item {
+                    id: connectionsTab
                     property int clickCount: 0
 
                     Column {
@@ -229,7 +230,7 @@ Item {
 
                         Text {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            text: "点击次数: " + parent.parent.clickCount
+                            text: "点击次数: " + connectionsTab.clickCount
                             font.pixelSize: 16
                             color: "#666666"
                         }
@@ -249,8 +250,8 @@ Item {
                                     anchors.fill: parent
 
                                     onClicked: {
-                                        parent.parent.parent.parent.clickCount++
-                                        console.log("红色矩形被点击，次数:", parent.parent.parent.parent.clickCount)
+                                        connectionsTab.clickCount++
+                                        console.log("红色矩形被点击，次数:", connectionsTab.clickCount)
                                     }
                                 }
 
