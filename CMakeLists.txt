@@ -23,6 +23,7 @@ qt_add_qml_module(appdemo
         src/qml/Demo4.qml
         src/qml/Demo5.qml
         src/qml/Demo6.qml
+        src/qml/Demo7.qml
         src/qml/component/demo3/MyThreeColumnLayout.qml
         src/qml/component/demo3/MyCenterLayout.qml
         src/qml/component/demo3/MyFillLayout.qml
@@ -57,6 +58,12 @@ qt_add_qml_module(appdemo
         src/qml/component/demo6/MyDialog.qml
         src/qml/component/demo6/MyMenu.qml
         src/qml/component/demo6/MyCard.qml
+        src/qml/component/demo7/MyBasicState.qml
+        src/qml/component/demo7/MyColorPositionTransition.qml
+        src/qml/component/demo7/MyRotationScale.qml
+        src/qml/component/demo7/MyMultiState.qml
+        src/qml/component/demo7/MyTrafficLight.qml
+        src/qml/component/demo7/MyCardFlip.qml
 
     SOURCES
         Backend.h

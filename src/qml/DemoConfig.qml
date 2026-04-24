@@ -32,6 +32,11 @@ QtObject {
             "id": "demo6",
             "title": "Demo 6 - qml常用基础控件",
             "component": "Demo6"
+        },
+        {
+            "id": "demo7",
+            "title": "Demo 7 - State 和 Transition",
+            "component": "Demo7"
         }
     ]
 }
