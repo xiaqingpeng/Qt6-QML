@@ -284,6 +284,25 @@ Rectangle {
                             width: parent.width
                             horizontalAlignment: Text.AlignHCenter
                         }
+                        
+                        // 当前播放速度显示
+                        Rectangle {
+                            width: speedText.width + 20
+                            height: 28
+                            radius: 14
+                            color: "#3d3d4a"
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            visible: audioPlayer.currentPlaybackRate !== 1.0
+                            
+                            Text {
+                                id: speedText
+                                text: "⚡ " + audioPlayer.currentPlaybackRate + "x"
+                                font.pixelSize: 13
+                                font.bold: true
+                                color: "#ec4141"
+                                anchors.centerIn: parent
+                            }
+                        }
                     }
                     
                     // 进度条区域
@@ -361,6 +380,164 @@ Rectangle {
                                 font.pixelSize: 13
                                 color: "#aaaaaa"
                                 font.family: "Menlo, Monaco, monospace"
+                            }
+                        }
+                    }
+                    
+                    // 播放速度控制面板
+                    Column {
+                        width: parent.width
+                        spacing: 12
+                        
+                        // 标题和当前速度
+                        Row {
+                            width: parent.width
+                            
+                            Text {
+                                text: "⚡ 播放速度"
+                                font.pixelSize: 14
+                                color: "#aaaaaa"
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            
+                            Item {
+                                width: parent.width - 200
+                                height: 1
+                            }
+                            
+                            Text {
+                                text: audioPlayer.currentPlaybackRate.toFixed(2) + "x"
+                                font.pixelSize: 16
+                                font.bold: true
+                                color: "#ec4141"
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+                        
+                        // 速度滑块
+                        Slider {
+                            id: speedSlider
+                            width: parent.width
+                            from: 0
+                            to: audioPlayer.playbackRates.length - 1
+                            stepSize: 1
+                            value: audioPlayer.currentRateIndex
+                            snapMode: Slider.SnapAlways
+                            
+                            onMoved: {
+                                audioPlayer.setPlaybackRate(Math.round(value))
+                            }
+                            
+                            background: Rectangle {
+                                x: speedSlider.leftPadding
+                                y: speedSlider.topPadding + speedSlider.availableHeight / 2 - height / 2
+                                width: speedSlider.availableWidth
+                                height: 4
+                                radius: 2
+                                color: "#3d3d4a"
+                                
+                                // 刻度标记
+                                Repeater {
+                                    model: audioPlayer.playbackRates.length
+                                    
+                                    Rectangle {
+                                        required property int index
+                                        x: (speedSlider.availableWidth / (audioPlayer.playbackRates.length - 1)) * index - 2
+                                        y: -2
+                                        width: 4
+                                        height: 8
+                                        radius: 2
+                                        color: index === audioPlayer.currentRateIndex ? "#ec4141" : "#4d4d5a"
+                                        
+                                        Behavior on color {
+                                            ColorAnimation { duration: 200 }
+                                        }
+                                    }
+                                }
+                                
+                                Rectangle {
+                                    width: speedSlider.visualPosition * parent.width
+                                    height: parent.height
+                                    radius: 2
+                                    color: "#ec4141"
+                                }
+                            }
+                            
+                            handle: Rectangle {
+                                x: speedSlider.leftPadding + speedSlider.visualPosition * (speedSlider.availableWidth - width)
+                                y: speedSlider.topPadding + speedSlider.availableHeight / 2 - height / 2
+                                width: 20
+                                height: 20
+                                radius: 10
+                                color: "#ffffff"
+                                border.color: "#ec4141"
+                                border.width: 3
+                                
+                                scale: speedSlider.pressed ? 1.3 : 1.0
+                                
+                                Behavior on scale {
+                                    NumberAnimation { duration: 150 }
+                                }
+                                
+                                Text {
+                                    text: "⚡"
+                                    font.pixelSize: 10
+                                    anchors.centerIn: parent
+                                }
+                            }
+                        }
+                        
+                        // 速度预设按钮
+                        Row {
+                            spacing: 8
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            
+                            Repeater {
+                                model: audioPlayer.playbackRates
+                                
+                                Button {
+                                    required property real modelData
+                                    required property int index
+                                    
+                                    width: 50
+                                    height: 30
+                                    text: modelData + "x"
+                                    
+                                    background: Rectangle {
+                                        color: audioPlayer.currentRateIndex === index ? "#ec4141" : (parent.pressed ? "#3d3d4a" : "transparent")
+                                        radius: 15
+                                        border.color: audioPlayer.currentRateIndex === index ? "#ec4141" : "#4d4d5a"
+                                        border.width: 1.5
+                                        
+                                        Behavior on color {
+                                            ColorAnimation { duration: 200 }
+                                        }
+                                        
+                                        Behavior on border.color {
+                                            ColorAnimation { duration: 200 }
+                                        }
+                                    }
+                                    
+                                    contentItem: Text {
+                                        text: parent.text
+                                        font.pixelSize: 11
+                                        font.bold: audioPlayer.currentRateIndex === index
+                                        color: audioPlayer.currentRateIndex === index ? "#ffffff" : "#aaaaaa"
+                                        horizontalAlignment: Text.AlignHCenter
+                                        verticalAlignment: Text.AlignVCenter
+                                        
+                                        Behavior on color {
+                                            ColorAnimation { duration: 200 }
+                                        }
+                                    }
+                                    
+                                    onClicked: audioPlayer.setPlaybackRate(index)
+                                    
+                                    scale: pressed ? 0.9 : 1.0
+                                    Behavior on scale {
+                                        NumberAnimation { duration: 100 }
+                                    }
+                                }
                             }
                         }
                     }
@@ -687,6 +864,11 @@ Rectangle {
         property string songName: "栖息地"
         property string artistName: "Mikey-18 / 暴躁的兔子"
         
+        // 播放速度相关
+        property var playbackRates: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
+        property int currentRateIndex: 2  // 默认 1.0x
+        property real currentPlaybackRate: 1.0
+        
         property ListModel playlist: ListModel {
             ListElement {
                 songName: "栖息地"
@@ -755,6 +937,15 @@ Rectangle {
         
         function toggleMute() {
             isMuted = !isMuted
+        }
+        
+        function setPlaybackRate(index) {
+            if (index >= 0 && index < playbackRates.length) {
+                currentRateIndex = index
+                currentPlaybackRate = playbackRates[index]
+                player.playbackRate = currentPlaybackRate
+                console.log("播放速度设置为:", currentPlaybackRate + "x")
+            }
         }
         
         function formatTime(seconds) {
