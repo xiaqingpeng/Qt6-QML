@@ -1,37 +1,45 @@
-# QML Demo 示例集合
+# QML Examples 示例集合
 
-这是一个 Qt6 QML 学习项目，包含多个实用的 QML 示例，展示了 QML 的各种特性和最佳实践。
+这是一个 Qt6 QML 项目，包含多个实用的 QML 示例，展示了 QML 的各种特性和最佳实践。
 
 ## 项目特点
 
 - 🎯 **动态路由系统** - 类似前端 Umi 框架的约定式路由，自动生成导航菜单
 - 📱 **响应式布局** - 所有示例都支持自适应布局
 - 🎨 **现代化 UI** - 使用 Qt Quick Controls 2 构建美观的界面
-- 📚 **丰富示例** - 涵盖基础交互、布局、输入控件等常用场景
+- 📚 **丰富示例** - 涵盖基础交互、布局、输入控件、状态转换等常用场景
+- 🔧 **组件化设计** - 每个示例都拆分为独立的可复用组件
 
 ## 项目结构
 
 ```
 .
-├── Main.qml              # 主入口，动态路由系统
-├── DemoConfig.qml        # Demo 配置文件（路由配置）
-├── Demo1.qml             # 基础交互 & Qt 对象 & Connections
-├── Demo2.qml             # Backend & DataModel 示例
-├── Demo3.qml             # 锚点布局示例
-├── Demo4.qml             # 输入框示例
-├── Demo5.qml             # 鼠标键盘事件示例
-├── Demo6.qml             # QML 常用基础控件
-├── Backend.h/cpp         # C++ 后端类
-├── DataModel.h/cpp       # 数据模型类
-├── main.cpp              # 应用程序入口
-├── img.qrc               # 资源文件配置
-├── report.png            # 示例图片
-└── CMakeLists.txt        # CMake 构建配置
+├── Main.qml                          # 主入口，动态路由系统
+├── src/qml/
+│   ├── ExamplesConfig.qml           # 示例配置文件（路由配置）
+│   ├── InteractionBasics.qml        # 基础交互 & Qt 对象 & Connections
+│   ├── BackendIntegration.qml       # Backend & DataModel 示例
+│   ├── AnchorLayouts.qml            # 锚点布局示例
+│   ├── InputFields.qml              # 输入框示例
+│   ├── MouseKeyboardEvents.qml      # 鼠标键盘事件示例
+│   ├── BasicControls.qml            # QML 常用基础控件
+│   ├── StateTransitions.qml         # State 和 Transition 示例
+│   └── component/                   # 组件文件夹
+│       ├── AnchorLayouts/           # 锚点布局组件
+│       ├── InputFields/             # 输入框组件
+│       ├── MouseKeyboardEvents/     # 事件处理组件
+│       ├── BasicControls/           # 基础控件组件
+│       └── StateTransitions/        # 状态转换组件
+├── Backend.h/cpp                    # C++ 后端类
+├── DataModel.h/cpp                  # 数据模型类
+├── main.cpp                         # 应用程序入口
+├── report.png                       # 示例图片
+└── CMakeLists.txt                   # CMake 构建配置
 ```
 
-## Demo 列表
+## 示例列表
 
-### Demo 1 - 基础交互 & Qt 对象 & Connections
+### InteractionBasics - 基础交互 & Qt 对象 & Connections
 使用 TabBar 组织的三合一示例：
 
 **Tab 1: 基础交互**
@@ -51,13 +59,13 @@
 - 信号槽机制
 - 动态信号连接
 
-### Demo 2 - Backend & DataModel
+### BackendIntegration - Backend & DataModel
 - QML 与 C++ 交互
 - 自定义 C++ 类暴露给 QML
 - 数据模型绑定
 - 调用 C++ 方法并获取返回值
 
-### Demo 3 - 锚点布局示例
+### AnchorLayouts - 锚点布局示例
 包含 8 个实用布局模式：
 
 **示例 1: 三栏布局（顶部+左侧+中间）**
@@ -95,7 +103,7 @@
 - 中间内容区（自适应）
 - 底部播放器（70px）
 
-### Demo 4 - 输入框示例
+### InputFields - 输入框示例
 包含 8 种常用输入控件：
 1. 基础搜索框 - 带焦点高亮
 2. 密码输入框 - echoMode 隐藏输入
@@ -106,7 +114,7 @@
 7. 多行文本框 - TextArea
 8. 带清除按钮的输入框
 
-### Demo 5 - 鼠标键盘事件
+### MouseKeyboardEvents - 鼠标键盘事件
 包含 6 个交互示例：
 
 **示例 1: 点击事件**
@@ -135,7 +143,7 @@
 - 点击 + 拖拽 + 悬停
 - 综合交互演示
 
-### Demo 6 - QML 常用基础控件
+### BasicControls - QML 常用基础控件
 包含 12 个控件示例：
 
 **示例 1: Button 按钮**
@@ -199,6 +207,33 @@
 - 用户卡片
 - 悬停边框高亮效果
 
+### StateTransitions - State 和 Transition
+包含 6 个状态转换示例：
+
+**示例 1: 基础状态切换**
+- 简单的状态切换
+- 宽度、高度、颜色的过渡动画
+
+**示例 2: 颜色和位置过渡**
+- 位置移动和颜色变化
+- NumberAnimation 和 ColorAnimation
+
+**示例 3: 旋转和缩放动画**
+- 旋转、缩放和颜色同时变化
+- RotationAnimation 和弹性缓动效果
+
+**示例 4: 多状态切换**
+- 5 个不同状态之间的切换
+- 方块在不同位置和颜色之间平滑过渡
+
+**示例 5: 交通信号灯**
+- 红黄绿三色信号灯
+- 支持手动切换和自动循环模式
+
+**示例 6: 卡片翻转效果**
+- 3D 翻转效果
+- Rotation transform 实现翻转动画
+
 ## 技术栈
 
 - **Qt 6.8+** - Qt 框架
@@ -246,14 +281,20 @@ cmake --build .
 
 项目采用类似前端 Umi 框架的约定式路由，通过配置文件自动生成导航：
 
-**DemoConfig.qml** - 路由配置中心
+**ExamplesConfig.qml** - 路由配置中心
 ```qml
 QtObject {
+    // 示例配置列表
     property var demos: [
         {
-            "id": "demo1",
-            "title": "Demo 1 - 基础交互",
-            "component": "Demo1"
+            "id": "interactionBasics",
+            "title": "基础交互 & Qt 对象 & Connections",
+            "component": "InteractionBasics"
+        },
+        {
+            "id": "anchorLayouts",
+            "title": "锚点布局示例",
+            "component": "AnchorLayouts"
         }
         // ... 更多配置
     ]
@@ -262,35 +303,65 @@ QtObject {
 
 **Main.qml** - 动态加载实现
 ```qml
+ExamplesConfig {
+    id: examplesConfig
+}
+
 Repeater {
-    model: demoConfig.demos
+    model: examplesConfig.demos
     delegate: Button {
         required property var modelData
         text: modelData.title
         onClicked: {
-            loader.source = modelData.component + ".qml"
+            stackView.push(examplePageComponent, {
+                "exampleTitle": modelData.title,
+                "exampleComponent": modelData.component
+            })
         }
     }
 }
+```
 
-Loader {
-    id: loader
-    source: "Demo1.qml"
+### 组件化设计
+
+每个示例都采用组件化设计，将复杂的示例拆分为独立的可复用组件：
+
+**示例结构**
+```
+AnchorLayouts.qml                    # 主示例文件
+└── component/AnchorLayouts/         # 组件文件夹
+    ├── MyThreeColumnLayout.qml      # 三栏布局组件
+    ├── MyCenterLayout.qml           # 居中布局组件
+    ├── MyFillLayout.qml             # 填充布局组件
+    └── ...                          # 更多组件
+```
+
+**主文件示例** - `AnchorLayouts.qml`
+```qml
+Item {
+    ScrollView {
+        Column {
+            // 引用组件
+            MyThreeColumnLayout { id: threeColumnLayout }
+            MyCenterLayout { id: centerLayout }
+            MyFillLayout { id: fillLayout }
+        }
+    }
 }
 ```
 
-### 添加新 Demo
+### 添加新示例
 
 只需三步：
 
-**1. 创建 Demo 文件** - `Demo7.qml`
+**1. 创建示例文件** - `src/qml/CustomExample.qml`
 ```qml
 import QtQuick
 import QtQuick.Controls
 
 Item {
     id: root
-    property string name: "Demo 7 示例"
+    property string name: "自定义示例"
 
     Rectangle {
         anchors.fill: parent
@@ -298,29 +369,29 @@ Item {
         
         Text {
             anchors.centerIn: parent
-            text: "这是 Demo 7"
+            text: "这是自定义示例"
             font.pixelSize: 24
         }
     }
 }
 ```
 
-**2. 注册到 DemoConfig.qml**
+**2. 注册到 ExamplesConfig.qml**
 ```qml
 {
-    "id": "demo7",
-    "title": "Demo 7 - 新功能示例",
-    "component": "Demo7"
+    "id": "customExample",
+    "title": "自定义示例",
+    "component": "CustomExample"
 }
 ```
 
 **3. 添加到 CMakeLists.txt**
 ```cmake
 QML_FILES
-    Demo7.qml
+    src/qml/CustomExample.qml
 ```
 
-重新构建，新 Demo 自动出现在菜单中！
+重新构建，新示例自动出现在菜单中！
 
 ## 代码规范与最佳实践
 
@@ -374,7 +445,7 @@ ScrollView {
    - 保持组件职责单一
 
 2. **配置驱动**
-   - 使用 DemoConfig.qml 集中管理路由
+   - 使用 ExamplesConfig.qml 集中管理路由
    - 避免硬编码，提高可维护性
 
 3. **动态加载**
@@ -464,18 +535,20 @@ Loader {
 ## 学习路径建议
 
 ### 初学者
-1. **Demo 1** - 了解基础交互和 Qt 对象
-2. **Demo 3** - 掌握锚点布局
-3. **Demo 6** - 熟悉常用控件
+1. **InteractionBasics** - 了解基础交互和 Qt 对象
+2. **AnchorLayouts** - 掌握锚点布局
+3. **BasicControls** - 熟悉常用控件
 
 ### 进阶
-4. **Demo 2** - 学习 C++ 与 QML 交互
-5. **Demo 5** - 掌握事件处理
-6. **Demo 4** - 深入输入控件
+4. **BackendIntegration** - 学习 C++ 与 QML 交互
+5. **MouseKeyboardEvents** - 掌握事件处理
+6. **InputFields** - 深入输入控件
+7. **StateTransitions** - 掌握状态和动画
 
 ### 实战技巧
 - 查看 `Main.qml` 了解动态路由实现
-- 研究 `DemoConfig.qml` 学习配置驱动
+- 研究 `ExamplesConfig.qml` 学习配置驱动
+- 阅读组件文件夹了解组件化设计
 - 阅读 `Backend.cpp` 理解 C++ 集成
 
 ## 扩展资源
@@ -492,12 +565,19 @@ Loader {
 
 ## 版本历史
 
-### v1.0.0 (当前版本)
-- ✅ 6 个完整 Demo 示例
+### v2.0.0 (当前版本)
+- ✅ 7 个完整示例（新增 StateTransitions）
+- ✅ 组件化设计，50+ 可复用组件
+- ✅ 动态路由系统
+- ✅ 语义化命名，提高代码可读性
+- ✅ C++ 与 QML 交互
+- ✅ 60+ 控件和动画示例
+- ✅ 完整的布局演示
+
+### v1.0.0
+- ✅ 6 个基础示例
 - ✅ 动态路由系统
 - ✅ C++ 与 QML 交互
-- ✅ 50+ 控件示例
-- ✅ 完整的布局演示
 
 ## 许可证
 
