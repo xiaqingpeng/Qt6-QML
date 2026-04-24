@@ -37,6 +37,11 @@ QtObject {
             "id": "stateTransitions",
             "title": "State 和 Transition",
             "component": "StateTransitions"
+        },
+        {
+            "id": "audioPlayer",
+            "title": "音频播放器",
+            "component": "AudioPlayer"
         }
     ]
 }

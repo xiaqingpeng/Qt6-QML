@@ -82,3 +82,8 @@ CMakeLists.txt.user*
 .rcc/
 .uic/
 /build*/
+
+# Audio files (optional - uncomment if audio files are large)
+# audio/*.mp3
+# audio/*.wav
+# audio/*.ogg
