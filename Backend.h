@@ -14,9 +14,9 @@ class Backend : public QObject {
     Q_PROPERTY(int counter READ counter NOTIFY counterChanged)
 
 public:
-    explicit Backend(QObject *parent = nullptr) : QObject(parent), m_counter(0) {}
-    int counter() const { return m_counter; }
-    Q_INVOKABLE void increment() { m_counter++; emit counterChanged(); }
+    explicit Backend(QObject *parent = nullptr);
+    int counter() const;
+    Q_INVOKABLE void increment();
 
 signals:
     void counterChanged();
