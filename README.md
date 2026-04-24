@@ -532,22 +532,22 @@ Loader {
 }
 ```
 
-## 学习路径建议
+## 路径建议
 
-### 初学者
+### 基础
 1. **InteractionBasics** - 了解基础交互和 Qt 对象
 2. **AnchorLayouts** - 掌握锚点布局
 3. **BasicControls** - 熟悉常用控件
 
 ### 进阶
-4. **BackendIntegration** - 学习 C++ 与 QML 交互
+4. **BackendIntegration** -  C++ 与 QML 交互
 5. **MouseKeyboardEvents** - 掌握事件处理
 6. **InputFields** - 深入输入控件
 7. **StateTransitions** - 掌握状态和动画
 
 ### 实战技巧
 - 查看 `Main.qml` 了解动态路由实现
-- 研究 `ExamplesConfig.qml` 学习配置驱动
+- 研究 `ExamplesConfig.qml` 配置驱动
 - 阅读组件文件夹了解组件化设计
 - 阅读 `Backend.cpp` 理解 C++ 集成
 
