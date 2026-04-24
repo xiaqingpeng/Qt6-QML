@@ -9,11 +9,11 @@ Window {
     width: 960
     height: 720
     visible: true
-    title: "QML Demo 导航"
+    title: "QML Examples 导航"
 
-    // Demo 配置
-    DemoConfig {
-        id: demoConfig
+    // Examples 配置
+    ExamplesConfig {
+        id: examplesConfig
     }
 
     StackView {
@@ -29,7 +29,7 @@ Window {
         Page {
             id: menuPageItem
             
-            title: "选择 Demo"
+            title: "选择示例"
 
             ScrollView {
                 anchors.fill: parent
@@ -44,7 +44,7 @@ Window {
                     width: 300
 
                     Text {
-                        text: "QML Demo 示例集合"
+                        text: "QML 示例集合"
                         font.pixelSize: 24
                         font.bold: true
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -52,7 +52,7 @@ Window {
 
                     // 动态生成按钮
                     Repeater {
-                        model: demoConfig.demos
+                        model: examplesConfig.demos
 
                         delegate: Button {
                             required property var modelData
@@ -62,9 +62,9 @@ Window {
                             width: 300
                             anchors.horizontalCenter: parent.horizontalCenter
                             onClicked: {
-                                menuPageItem.StackView.view.push(demoPageComponent, {
-                                    "demoTitle": modelData.title,
-                                    "demoComponent": modelData.component
+                                menuPageItem.StackView.view.push(examplePageComponent, {
+                                    "exampleTitle": modelData.title,
+                                    "exampleComponent": modelData.component
                                 })
                             }
                         }
@@ -74,32 +74,32 @@ Window {
         }
     }
 
-    // 通用 Demo 页面组件
+    // 通用示例页面组件
     Component {
-        id: demoPageComponent
+        id: examplePageComponent
 
         Page {
-            id: demoPage
-            required property string demoTitle
-            required property string demoComponent
+            id: examplePage
+            required property string exampleTitle
+            required property string exampleComponent
 
-            title: demoTitle
+            title: exampleTitle
 
             header: ToolBar {
                 Button {
                     text: "← 返回"
                     onClicked: {
-                        demoPage.StackView.view.pop()
+                        examplePage.StackView.view.pop()
                     }
                 }
             }
 
             Loader {
                 anchors.fill: parent
-                source: "qrc:/qt/qml/demo/src/qml/" + demoPage.demoComponent + ".qml"
+                source: "qrc:/qt/qml/demo/src/qml/" + examplePage.exampleComponent + ".qml"
                 onStatusChanged: {
                     if (status === Loader.Error) {
-                        console.error("Failed to load:", demoPage.demoComponent)
+                        console.error("Failed to load:", examplePage.exampleComponent)
                     }
                 }
             }
