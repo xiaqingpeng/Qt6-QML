@@ -11,6 +11,17 @@ Window {
     visible: true
     title: "QML Examples 导航"
 
+    signal sig
+
+    onSig: {
+        console.log("signal is triggered");
+    }
+
+    function testArg(arg) {
+        console.log("arg is ", arg);
+        return "testArg"
+    }
+
     // Examples 配置
     ExamplesConfig {
         id: examplesConfig
@@ -22,13 +33,23 @@ Window {
         initialItem: menuPage
     }
 
+    // 红色矩形 - 放在最上层以便显示
+    Rectangle {
+        objectName: "examplesConfig"
+        width: 100
+        height: 100
+        color: 'red'
+        anchors.verticalCenter: parent.verticalCenter
+        z: 1  // 确保显示在 StackView 上层
+    }
+
     // 主菜单页面
     Component {
         id: menuPage
 
         Page {
             id: menuPageItem
-            
+
             title: "选择示例"
 
             ScrollView {
@@ -57,15 +78,15 @@ Window {
                         delegate: Button {
                             required property var modelData
                             required property int index
-                            
+
                             text: modelData.title
                             width: 300
                             anchors.horizontalCenter: parent.horizontalCenter
                             onClicked: {
                                 menuPageItem.StackView.view.push(examplePageComponent, {
-                                    "exampleTitle": modelData.title,
-                                    "exampleComponent": modelData.component
-                                })
+                                                                     "exampleTitle": modelData.title,
+                                                                     "exampleComponent": modelData.component
+                                                                 });
                             }
                         }
                     }
@@ -89,7 +110,7 @@ Window {
                 Button {
                     text: "← 返回"
                     onClicked: {
-                        examplePage.StackView.view.pop()
+                        examplePage.StackView.view.pop();
                     }
                 }
             }
@@ -99,7 +120,7 @@ Window {
                 source: "qrc:/qt/qml/demo/src/qml/" + examplePage.exampleComponent + ".qml"
                 onStatusChanged: {
                     if (status === Loader.Error) {
-                        console.error("Failed to load:", examplePage.exampleComponent)
+                        console.error("Failed to load:", examplePage.exampleComponent);
                     }
                 }
             }

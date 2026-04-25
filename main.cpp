@@ -2,29 +2,29 @@
 #include <QQmlApplicationEngine>
 #include <QStringLiteral>
 #include <QQuickStyle>
+#include "QmlHelper.h"
 
 int main(int argc, char *argv[]) {
-  qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+    qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 
-  // 设置 QML 样式为 Basic，支持自定义控件外观
-  QQuickStyle::setStyle("Basic");
+    // 设置 QML 样式为 Basic，支持自定义控件外观
+    QQuickStyle::setStyle("Basic");
 
-  QGuiApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
-  QQmlApplicationEngine engine;
-  QObject::connect(
-      &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
-      []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
- // engine.loadFromModule("demo", "demo1");
+    QQmlApplicationEngine engine;
+    QObject::connect(
+        &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
+        []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
+    // engine.loadFromModule("demo", "demo1");
 
-  // 改为
-  engine.load(QUrl(QStringLiteral("qrc:/qt/qml/demo/Main.qml")));
+    // 改为
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/demo/Main.qml")));
 
-  QList<QObject*> obj = engine.rootObjects();
 
-  qDebug()<< "list size is"<< obj.size();
 
-  qDebug()<< "list first is"<< obj.first();
+    cplus(engine);
 
-  return app.exec();
+
+    return app.exec();
 }
