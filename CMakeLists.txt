@@ -71,8 +71,8 @@ qt_add_qml_module(appdemo
         Backend.cpp
         DataModel.cpp
         DataModel.h
-        QmlHelper.h
-        QmlHelper.cpp
+        QmlBridge.h
+        QmlBridge.cpp
     RESOURCES
         report.png
         audio/sample1.mp3

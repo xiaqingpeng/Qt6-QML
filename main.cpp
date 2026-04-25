@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QStringLiteral>
 #include <QQuickStyle>
-#include "QmlHelper.h"
+#include "QmlBridge.h"
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -21,10 +21,10 @@ int main(int argc, char *argv[]) {
     // 改为
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/demo/Main.qml")));
 
-
-
     cplus(engine);
 
+    // 设置 QML 信号连接
+    setupQmlSignalConnections(engine);
 
     return app.exec();
 }
