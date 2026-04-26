@@ -4,6 +4,7 @@
 #include <QQuickStyle>
 #include "QmlBridge.h"
 #include "MarkdownConverter.h"
+#include "NoteDatabase.h"
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -15,6 +16,9 @@ int main(int argc, char *argv[]) {
 
     // 注册 MarkdownConverter 类到 QML
     qmlRegisterType<MarkdownConverter>("demo", 1, 0, "MarkdownConverter");
+
+    // 注册 NoteDatabase 类到 QML
+    qmlRegisterType<NoteDatabase>("demo", 1, 0, "NoteDatabase");
 
     QQmlApplicationEngine engine;
     QObject::connect(

@@ -47,6 +47,11 @@ QtObject {
             "id": "markdownEditor",
             "title": "Markdown 编辑器",
             "component": "MarkdownEditor"
+        },
+        {
+            "id": "notesApp",
+            "title": "SQLite 笔记应用",
+            "component": "NotesApp"
         }
     ]
 }

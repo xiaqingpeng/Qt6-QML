@@ -36,8 +36,9 @@ Window {
     // 红色矩形 - 放在最上层以便显示
     Rectangle {
         objectName: "examplesConfig"
-        width: 100
-        height: 100
+        width: 50
+        height: 50
+        radius:25
         color: 'red'
         anchors.verticalCenter: parent.verticalCenter
         z: 1  // 确保显示在 StackView 上层
