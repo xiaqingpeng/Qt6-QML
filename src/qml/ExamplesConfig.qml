@@ -42,6 +42,11 @@ QtObject {
             "id": "audioPlayer",
             "title": "音频播放器",
             "component": "AudioPlayer"
+        },
+        {
+            "id": "markdownEditor",
+            "title": "Markdown 编辑器",
+            "component": "MarkdownEditor"
         }
     ]
 }

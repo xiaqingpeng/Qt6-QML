@@ -25,6 +25,7 @@ qt_add_qml_module(appdemo
         src/qml/BasicControls.qml
         src/qml/StateTransitions.qml
         src/qml/AudioPlayer.qml
+        src/qml/MarkdownEditor.qml
         src/qml/component/AnchorLayouts/MyThreeColumnLayout.qml
         src/qml/component/AnchorLayouts/MyCenterLayout.qml
         src/qml/component/AnchorLayouts/MyFillLayout.qml
@@ -73,6 +74,8 @@ qt_add_qml_module(appdemo
         DataModel.h
         QmlBridge.h
         QmlBridge.cpp
+        MarkdownConverter.h
+        MarkdownConverter.cpp
     RESOURCES
         report.png
         audio/sample1.mp3
