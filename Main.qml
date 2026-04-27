@@ -57,11 +57,16 @@ Window {
                 anchors.fill: parent
                 clip: true
                 contentWidth: availableWidth
+                
+                // 显示垂直滚动条
+                ScrollBar.vertical.policy: ScrollBar.AsNeeded
 
                 Column {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     anchors.topMargin: 50
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 50
                     spacing: 20
                     width: 300
 
