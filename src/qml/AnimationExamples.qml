@@ -70,13 +70,15 @@ Page {
                                 }
                             }
 
+                            // PropertyAnimation - 属性动画
+                            // 可以同时对多个属性进行动画处理
                             PropertyAnimation {
                                 id: propAnim
-                                target: propAnimRect
-                                properties: "x,color"
-                                to: propAnimRect.x === 20 ? propAnimContainer.width - 100 : 20
-                                duration: 1000
-                                easing.type: Easing.InOutQuad
+                                target: propAnimRect                    // 动画目标对象
+                                properties: "x,color"                   // 要动画的属性列表（用逗号分隔）
+                                to: propAnimRect.x === 20 ? propAnimContainer.width - 100 : 20  // 目标值（三元表达式实现来回移动）
+                                duration: 1000                          // 动画持续时间（毫秒）
+                                easing.type: Easing.InOutQuad          // 缓动函数类型（先加速后减速）
                             }
                         }
                     }
