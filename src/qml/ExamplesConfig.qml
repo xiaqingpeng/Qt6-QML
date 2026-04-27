@@ -39,6 +39,11 @@ QtObject {
             "component": "StateTransitions"
         },
         {
+            "id": "animationExamples",
+            "title": "QML 常用动画",
+            "component": "AnimationExamples"
+        },
+        {
             "id": "audioPlayer",
             "title": "音频播放器",
             "component": "AudioPlayer"

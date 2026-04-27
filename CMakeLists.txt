@@ -24,6 +24,7 @@ qt_add_qml_module(appdemo
         src/qml/MouseKeyboardEvents.qml
         src/qml/BasicControls.qml
         src/qml/StateTransitions.qml
+        src/qml/AnimationExamples.qml
         src/qml/AudioPlayer.qml
         src/qml/MarkdownEditor.qml
         src/qml/NotesApp.qml
