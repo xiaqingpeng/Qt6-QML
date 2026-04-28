@@ -5,6 +5,8 @@
 #include "QmlBridge.h"
 #include "MarkdownConverter.h"
 #include "NoteDatabase.h"
+#include "NetworkManager.h"
+#include "FileManager.h"
 
 int main(int argc, char *argv[]) {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
@@ -19,6 +21,12 @@ int main(int argc, char *argv[]) {
 
     // 注册 NoteDatabase 类到 QML
     qmlRegisterType<NoteDatabase>("demo", 1, 0, "NoteDatabase");
+
+    // 注册 NetworkManager 类到 QML
+    qmlRegisterType<NetworkManager>("com.example", 1, 0, "NetworkManager");
+
+    // 注册 FileManager 类到 QML
+    qmlRegisterType<FileManager>("com.example", 1, 0, "FileManager");
 
     QQmlApplicationEngine engine;
     QObject::connect(

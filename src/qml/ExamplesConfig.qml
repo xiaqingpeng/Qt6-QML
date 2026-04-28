@@ -57,6 +57,21 @@ QtObject {
             "id": "notesApp",
             "title": "SQLite 笔记应用",
             "component": "NotesApp"
+        },
+        {
+            "id": "networkRequests",
+            "title": "网络请求示例",
+            "component": "NetworkRequests"
+        },
+        {
+            "id": "listViewAdvanced",
+            "title": "ListView 高级用法",
+            "component": "ListViewAdvanced"
+        },
+        {
+            "id": "fileOperations",
+            "title": "文件操作示例",
+            "component": "FileOperations"
         }
     ]
 }
