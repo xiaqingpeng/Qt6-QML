@@ -2,23 +2,24 @@
 
 这是一个 Qt6 QML 项目，包含多个实用的 QML 示例，展示了 QML 的各种特性和最佳实践。
 
-## ✨ 最新更新 v2.1.0
+## ✨ 最新更新 v3.0.0
 
-🎵 **全新音频播放器示例！**
-- 完整的音频播放功能（播放/暂停/切换/进度控制）
-- ⚡ **播放速度控制**（0.5x - 2.0x 倍速播放）
-- 现代化深色主题 UI 设计
-- 平滑的动画效果和交互体验
-- 完善的播放列表管理
+🚀 **新增三大实用示例！**
+- 🌐 **网络请求示例** - 使用 C++ NetworkManager 进行 HTTP 请求
+- 📋 **ListView 高级用法** - 分组、搜索、滑动删除
+- 📁 **文件操作示例** - 打开、保存、编辑文本文件
+- 🎵 **音频播放器** - 完整的播放控制和速度调节（v2.1.0）
 
 ## 项目特点
 
 - 🎯 **动态路由系统** - 类似前端 Umi 框架的约定式路由，自动生成导航菜单
 - 📱 **响应式布局** - 所有示例都支持自适应布局
 - 🎨 **现代化 UI** - 使用 Qt Quick Controls 2 构建美观的界面
-- 📚 **丰富示例** - 涵盖基础交互、布局、输入控件、状态转换、多媒体等常用场景
+- 📚 **丰富示例** - 涵盖基础交互、布局、输入控件、状态转换、网络请求、文件操作、多媒体等常用场景
 - 🔧 **组件化设计** - 每个示例都拆分为独立的可复用组件
-- 🎵 **多媒体支持** - 集成 Qt Multimedia，支持音频播放和速度控制 🆕
+- � **网络功能** - 集成 Qt Network，支持 HTTP GET/POST 请求 🆕
+- 📁 **文件管理** - 完整的文件读写、保存、删除功能 🆕
+- �🎵 **多媒体支持** - 集成 Qt Multimedia，支持音频播放和速度控制
 
 ## 项目结构
 
@@ -34,27 +35,38 @@
 │   ├── MouseKeyboardEvents.qml      # 鼠标键盘事件示例
 │   ├── BasicControls.qml            # QML 常用基础控件
 │   ├── StateTransitions.qml         # State 和 Transition 示例
-│   ├── AudioPlayer.qml              # 音频播放器示例 🆕
+│   ├── AnimationExamples.qml        # QML 常用动画示例
+│   ├── AudioPlayer.qml              # 音频播放器示例
+│   ├── MarkdownEditor.qml           # Markdown 编辑器 🆕
+│   ├── NotesApp.qml                 # SQLite 笔记应用 🆕
+│   ├── NetworkRequests.qml          # 网络请求示例（C++ NetworkManager）🆕
+│   ├── NetworkRequestsSimple.qml    # 网络请求示例（XMLHttpRequest）🆕
+│   ├── ListViewAdvanced.qml         # ListView 高级用法 🆕
+│   ├── FileOperations.qml           # 文件操作示例 🆕
 │   └── component/                   # 组件文件夹（40+ 可复用组件）
 │       ├── AnchorLayouts/           # 锚点布局组件（8个）
 │       ├── InputFields/             # 输入框组件（8个）
 │       ├── MouseKeyboardEvents/     # 事件处理组件（6个）
 │       ├── BasicControls/           # 基础控件组件（12个）
 │       └── StateTransitions/        # 状态转换组件（6个）
-├── audio/                           # 音频资源文件夹 🆕
+├── audio/                           # 音频资源文件夹
 │   ├── sample1.mp3                  # 示例音频文件（2.1MB）
 │   └── README.md                    # 音频文件说明
 ├── Backend.h/cpp                    # C++ 后端类
 ├── DataModel.h/cpp                  # 数据模型类
+├── NetworkManager.h/cpp             # 网络管理类 🆕
+├── FileManager.h/cpp                # 文件管理类 🆕
+├── MarkdownConverter.h/cpp          # Markdown 转换类 🆕
+├── NoteDatabase.h/cpp               # SQLite 数据库类 🆕
 ├── main.cpp                         # 应用程序入口
 ├── report.png                       # 示例图片
-├── audio.qrc                        # 音频资源配置 🆕
+├── audio.qrc                        # 音频资源配置
 └── CMakeLists.txt                   # CMake 构建配置
 ```
 
 ## 示例列表
 
-### InteractionBasics - 基础交互 & Qt 对象 & Connections
+### 1. InteractionBasics - 基础交互 & Qt 对象 & Connections
 使用 TabBar 组织的三合一示例：
 
 **Tab 1: 基础交互**
@@ -74,13 +86,13 @@
 - 信号槽机制
 - 动态信号连接
 
-### BackendIntegration - Backend & DataModel
+### 2. BackendIntegration - Backend & DataModel
 - QML 与 C++ 交互
 - 自定义 C++ 类暴露给 QML
 - 数据模型绑定
 - 调用 C++ 方法并获取返回值
 
-### AnchorLayouts - 锚点布局示例
+### 3. AnchorLayouts - 锚点布局示例
 包含 8 个实用布局模式：
 
 **示例 1: 三栏布局（顶部+左侧+中间）**
@@ -118,7 +130,7 @@
 - 中间内容区（自适应）
 - 底部播放器（70px）
 
-### InputFields - 输入框示例
+### 4. InputFields - 输入框示例
 包含 8 种常用输入控件：
 1. 基础搜索框 - 带焦点高亮
 2. 密码输入框 - echoMode 隐藏输入
@@ -129,7 +141,7 @@
 7. 多行文本框 - TextArea
 8. 带清除按钮的输入框
 
-### MouseKeyboardEvents - 鼠标键盘事件
+### 5. MouseKeyboardEvents - 鼠标键盘事件
 包含 6 个交互示例：
 
 **示例 1: 点击事件**
@@ -158,7 +170,7 @@
 - 点击 + 拖拽 + 悬停
 - 综合交互演示
 
-### BasicControls - QML 常用基础控件
+### 6. BasicControls - QML 常用基础控件
 包含 12 个控件示例：
 
 **示例 1: Button 按钮**
@@ -222,7 +234,7 @@
 - 用户卡片
 - 悬停边框高亮效果
 
-### StateTransitions - State 和 Transition
+### 7. StateTransitions - State 和 Transition
 包含 6 个状态转换示例：
 
 **示例 1: 基础状态切换**
@@ -249,7 +261,19 @@
 - 3D 翻转效果
 - Rotation transform 实现翻转动画
 
-### AudioPlayer - 音频播放器 🆕
+### 8. AnimationExamples - QML 常用动画
+
+包含多种常用动画效果：
+- NumberAnimation - 数值动画
+- ColorAnimation - 颜色动画
+- RotationAnimation - 旋转动画
+- PropertyAnimation - 属性动画
+- SequentialAnimation - 顺序动画
+- ParallelAnimation - 并行动画
+- PathAnimation - 路径动画
+- SpringAnimation - 弹簧动画
+
+### 9. AudioPlayer - 音频播放器
 一个功能完整的现代化音频播放器，展示 Qt Multimedia 的强大功能。
 
 **核心功能**
@@ -289,29 +313,163 @@
 - 集成 Qt Multimedia 模块
 - 完整的播放器逻辑和 UI
 
+### 10. MarkdownEditor - Markdown 编辑器 🆕
+
+一个功能完整的 Markdown 编辑器，支持实时预览和 HTML 转换。
+
+**核心功能**
+- ✍️ **实时编辑** - 左侧 Markdown 编辑器
+- 👁️ **实时预览** - 右侧 HTML 预览（使用 C++ MarkdownConverter）
+- 📋 **快速模板** - 标题、列表、代码块、表格等
+- 💾 **文件操作** - 保存/加载 Markdown 文件
+- 📊 **统计信息** - 字数、行数实时统计
+
+**技术实现**
+- 使用 C++ MarkdownConverter 类进行 Markdown → HTML 转换
+- 双栏布局（编辑器 + 预览）
+- TextArea 编辑器 + TextEdit 预览
+- 完整的文件读写功能
+
+### 11. NotesApp - SQLite 笔记应用 🆕
+
+一个完整的笔记应用，展示 Qt SQL 模块的使用。
+
+**核心功能**
+- 📝 **创建笔记** - 标题 + 内容
+- 📋 **笔记列表** - 显示所有笔记
+- ✏️ **编辑笔记** - 修改现有笔记
+- 🗑️ **删除笔记** - 删除不需要的笔记
+- 🔍 **搜索功能** - 按标题搜索
+- 💾 **持久化存储** - SQLite 数据库
+
+**技术实现**
+- 使用 C++ NoteDatabase 类管理 SQLite 数据库
+- CRUD 操作完整实现
+- ListView 显示笔记列表
+- 实时数据更新
+
+### 12. NetworkRequests - 网络请求示例 🆕
+
+展示如何使用 Qt Network 进行 HTTP 请求，包含两个版本。
+
+**NetworkRequests.qml - C++ NetworkManager 版本（推荐）**
+
+**核心功能**
+- 🌐 **GET 请求** - 获取数据（JSONPlaceholder API）
+  - 获取用户列表
+  - 获取文章列表
+  - 获取待办事项
+  - 获取评论
+- 📤 **POST 请求** - 提交数据
+  - 创建新文章
+  - JSON 数据提交
+- 📊 **响应展示** - ListView 显示结果
+- ⏱️ **进度显示** - 下载进度条
+- ❌ **错误处理** - 网络错误提示
+- 🔄 **取消请求** - 支持取消正在进行的请求
+
+**技术实现**
+- 使用 C++ NetworkManager 类（QNetworkAccessManager）
+- 信号槽机制处理异步响应
+- JSON 数据解析和格式化输出
+- 完善的错误处理和超时控制
+- 控制台输出格式化 JSON（带缩进、统计信息）
+
+**NetworkRequestsSimple.qml - XMLHttpRequest 版本**
+- 纯 QML 实现，无需 C++ 类
+- 使用 XMLHttpRequest API
+- 适合简单场景
+
+**示例 API**
+- JSONPlaceholder - 免费的 REST API 测试服务
+- https://jsonplaceholder.typicode.com
+
+### 13. ListViewAdvanced - ListView 高级用法 🆕
+
+展示 ListView 的高级特性和常用模式。
+
+**核心功能**
+- 📑 **分组显示** - section.property 分组
+- 🔍 **搜索过滤** - 实时搜索联系人
+- 👆 **滑动删除** - SwipeDelegate 实现
+- 🎨 **自定义委托** - 头像、多行文本
+- 📊 **分组头部** - 自定义 section header
+- 🔄 **动态数据** - 添加/删除项目
+- 💫 **动画效果** - 添加/删除动画
+
+**技术实现**
+- ListModel 数据模型
+- section.property 和 section.delegate 分组
+- SwipeDelegate 滑动操作
+- 自定义 delegate 样式
+- 搜索过滤逻辑
+
+**示例数据**
+- 联系人列表（姓名、电话、邮箱、部门）
+- 按部门分组显示
+- 支持搜索和删除
+
+### 14. FileOperations - 文件操作示例 🆕
+
+完整的文件管理功能，展示 Qt 文件 I/O 操作。
+
+**核心功能**
+- 📂 **打开文件** - FileDialog 选择文件
+- 💾 **保存文件** - 保存当前内容
+- 📝 **另存为** - 保存到新文件
+- 🗑️ **删除文件** - 删除当前文件（带确认）
+- ⚡ **快速模板** - TODO、会议记录、日记模板
+- 📊 **文件信息** - 显示文件名、大小、修改时间
+- ✏️ **文本编辑器** - 完整的文本编辑功能
+- 📈 **实时统计** - 字数、行数统计
+
+**技术实现**
+- 使用 C++ FileManager 类进行文件操作
+- FileDialog 文件选择对话框
+- TextArea 文本编辑器
+- 文件信息读取（QFileInfo）
+- 错误处理和状态提示
+
+**支持的文件格式**
+- 文本文件（.txt）
+- Markdown 文件（.md）
+- 所有文件（*）
+
+**快速模板**
+- TODO 列表模板
+- 会议记录模板
+- 日记模板
+
 ## 技术栈
 
 - **Qt 6.8+** - Qt 框架
 - **QML** - 声明式 UI 语言
 - **Qt Quick Controls 2** - UI 控件库
-- **Qt Multimedia** - 音频/视频播放 🆕
+- **Qt Multimedia** - 音频/视频播放
+- **Qt Network** - HTTP 网络请求 🆕
+- **Qt SQL** - SQLite 数据库 🆕
 - **C++17** - 后端逻辑
 - **CMake** - 构建系统
 
 ## 项目统计 📊
 
-- **示例数量**: 8 个完整示例
+- **示例数量**: 14 个完整示例
 - **组件数量**: 40+ 可复用组件
-- **代码行数**: ~1,700+ 行 QML 代码
+- **代码行数**: ~2,500+ 行 QML 代码
 - **音频资源**: 1 个示例音频文件（2.1MB）
-- **C++ 类**: 2 个（Backend, DataModel）
+- **C++ 类**: 6 个（Backend, DataModel, NetworkManager, FileManager, MarkdownConverter, NoteDatabase）
+- **网络功能**: HTTP GET/POST 请求 🆕
+- **数据库**: SQLite 笔记应用 🆕
+- **文件操作**: 完整的文件读写功能 🆕
 
 ## 构建与运行
 
 ### 环境要求
 
 - Qt 6.8 或更高版本
-- Qt Multimedia 模块（音频播放必需）🆕
+- Qt Multimedia 模块（音频播放必需）
+- Qt Network 模块（网络请求必需）🆕
+- Qt SQL 模块（SQLite 数据库必需）🆕
 - CMake 3.16+
 - C++17 编译器
 - macOS / Linux / Windows
@@ -357,6 +515,36 @@ open build/appdemo.app
 4. 尝试调整播放速度（拖动滑块或点击速度按钮）
 5. 测试其他功能（进度条、静音、切换歌曲）
 
+### 网络请求快速测试 🆕
+
+```bash
+# 运行应用
+./build/appdemo.app/Contents/MacOS/appdemo
+```
+
+**测试步骤**:
+1. 启动应用
+2. 点击主菜单中的 **"网络请求示例"**
+3. 点击 "获取用户列表" 按钮
+4. 查看控制台输出的格式化 JSON 数据
+5. 测试其他 API（文章、待办事项、评论）
+6. 尝试 POST 请求创建新文章
+
+### 文件操作快速测试 🆕
+
+```bash
+# 运行应用
+./build/appdemo.app/Contents/MacOS/appdemo
+```
+
+**测试步骤**:
+1. 启动应用
+2. 点击主菜单中的 **"文件操作示例"**
+3. 点击 "📂 打开文件" 选择一个文本文件
+4. 编辑文件内容
+5. 点击 "💾 保存" 或 "📝 另存为"
+6. 尝试快速模板（TODO、会议记录、日记）
+
 ## 核心特性详解
 
 ### 动态路由系统
@@ -374,16 +562,16 @@ QtObject {
             "component": "InteractionBasics"
         },
         {
-            "id": "stateTransitions",
-            "title": "State 和 Transition",
-            "component": "StateTransitions"
+            "id": "networkRequests",
+            "title": "网络请求示例",
+            "component": "NetworkRequests"
         },
         {
-            "id": "audioPlayer",
-            "title": "音频播放器",
-            "component": "AudioPlayer"
+            "id": "fileOperations",
+            "title": "文件操作示例",
+            "component": "FileOperations"
         }
-        // ... 共 8 个示例
+        // ... 共 14 个示例
     ]
 }
 ```
@@ -474,8 +662,14 @@ Item {
 
 **3. 添加到 CMakeLists.txt**
 ```cmake
-QML_FILES
-    src/qml/CustomExample.qml
+qt_add_qml_module(appdemo
+    URI demo
+    VERSION 1.0
+    QML_FILES
+        Main.qml
+        src/qml/CustomExample.qml  # 新增
+        # ... 其他文件
+)
 ```
 
 重新构建，新示例自动出现在菜单中！
@@ -557,15 +751,28 @@ ScrollView {
 // main.cpp
 qmlRegisterType<Backend>("com.example", 1, 0, "Backend");
 qmlRegisterType<DataModel>("com.example", 1, 0, "DataModel");
+qmlRegisterType<NetworkManager>("com.example", 1, 0, "NetworkManager");  // 🆕
+qmlRegisterType<FileManager>("com.example", 1, 0, "FileManager");  // 🆕
+qmlRegisterType<MarkdownConverter>("com.example", 1, 0, "MarkdownConverter");  // 🆕
+qmlRegisterType<NoteDatabase>("com.example", 1, 0, "NoteDatabase");  // 🆕
 ```
 
 **QML 中使用**
 ```qml
 import com.example 1.0
 
-Backend {
-    id: backend
-    onDataChanged: console.log("数据更新")
+NetworkManager {
+    id: networkManager
+    onRequestFinished: function(response) {
+        console.log("响应:", response)
+    }
+}
+
+FileManager {
+    id: fileManager
+    onFileOperationSuccess: function(message) {
+        console.log("成功:", message)
+    }
 }
 ```
 
@@ -583,7 +790,13 @@ A: 三步走：
 2. 在 `main.cpp` 中注册：`qmlRegisterType<YourClass>("com.example", 1, 0, "YourClass")`
 3. 在 QML 中导入使用：`import com.example 1.0`
 
-参考 `Backend.h/cpp` 和 `DataModel.h/cpp` 示例。
+参考示例：
+- `Backend.h/cpp` - 基础后端类
+- `DataModel.h/cpp` - 数据模型
+- `NetworkManager.h/cpp` - 网络请求 🆕
+- `FileManager.h/cpp` - 文件操作 🆕
+- `MarkdownConverter.h/cpp` - Markdown 转换 🆕
+- `NoteDatabase.h/cpp` - SQLite 数据库 🆕
 
 ### Q: 图片资源如何加载？
 A: 两种方式：
@@ -619,7 +832,68 @@ Loader {
 }
 ```
 
-### Q: 音频播放器无法播放？🆕
+### Q: 网络请求失败怎么办？🆕
+A: 按以下步骤排查：
+
+1. **检查网络连接**:
+   ```bash
+   # 测试 API 是否可访问
+   curl https://jsonplaceholder.typicode.com/users
+   ```
+
+2. **查看控制台日志**:
+   - 启动应用后查看控制台输出
+   - 应该看到 "GET 请求:" 和响应数据
+
+3. **检查 Qt Network 模块**:
+   ```cmake
+   # CMakeLists.txt 中应包含
+   find_package(Qt6 REQUIRED COMPONENTS Network)
+   target_link_libraries(appdemo PRIVATE Qt6::Network)
+   ```
+
+4. **使用 NetworkRequestsSimple.qml**:
+   - 如果 C++ 版本有问题，可以使用纯 QML 的 XMLHttpRequest 版本
+   - 在 ExamplesConfig.qml 中切换到 "NetworkRequestsSimple"
+
+### Q: 文件对话框不显示怎么办？🆕
+A: 可能的原因和解决方案：
+
+1. **检查 Qt Quick Dialogs 模块**:
+   ```qml
+   import QtQuick.Dialogs  // 确保导入
+   ```
+
+2. **查看控制台日志**:
+   - 点击按钮后应该看到 "点击打开文件按钮" 或 "点击另存为按钮"
+
+3. **尝试重新构建**:
+   ```bash
+   rm -rf build
+   cmake -B build -S .
+   cmake --build build
+   ```
+
+4. **检查文件权限**:
+   - 确保应用有文件系统访问权限
+   - macOS 可能需要在系统设置中授权
+
+### Q: SQLite 数据库在哪里？🆕
+A: 数据库文件位置：
+```cpp
+// NoteDatabase.cpp 中定义
+QString dbPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+// macOS: ~/Library/Application Support/appdemo/notes.db
+// Linux: ~/.local/share/appdemo/notes.db
+// Windows: C:/Users/[用户名]/AppData/Local/appdemo/notes.db
+```
+
+查看数据库内容：
+```bash
+# macOS
+sqlite3 ~/Library/Application\ Support/appdemo/notes.db
+sqlite> SELECT * FROM notes;
+```
 A: 按以下步骤排查：
 
 1. **检查 Qt Multimedia 模块**:
@@ -694,31 +968,65 @@ MediaPlayer {
 
 ## 学习路径建议
 
-### 基础入门
+### 基础入门（第 1-3 天）
 1. **InteractionBasics** - 了解基础交互和 Qt 对象
 2. **AnchorLayouts** - 掌握锚点布局
 3. **BasicControls** - 熟悉常用控件
 
-### 进阶学习
+### 进阶学习（第 4-7 天）
 4. **BackendIntegration** - C++ 与 QML 交互
 5. **MouseKeyboardEvents** - 掌握事件处理
 6. **InputFields** - 深入输入控件
 7. **StateTransitions** - 掌握状态和动画
+8. **AnimationExamples** - 学习各种动画效果
 
-### 实战项目
-8. **AudioPlayer** - Qt Multimedia 音频播放器 🆕
+### 实战项目（第 8-14 天）
+9. **AudioPlayer** - Qt Multimedia 音频播放器
    - 完整的多媒体应用
    - 播放速度控制实现
    - 现代化 UI 设计
    - 状态管理和错误处理
+
+10. **NetworkRequests** - Qt Network 网络请求 🆕
+    - HTTP GET/POST 请求
+    - JSON 数据解析
+    - 异步请求处理
+    - 错误处理和重试机制
+
+11. **ListViewAdvanced** - ListView 高级特性 🆕
+    - 分组显示
+    - 搜索过滤
+    - 滑动删除
+    - 自定义委托
+
+12. **FileOperations** - 文件系统操作 🆕
+    - 文件读写
+    - 文件对话框
+    - 文件信息获取
+    - 错误处理
+
+13. **MarkdownEditor** - Markdown 编辑器 🆕
+    - 实时预览
+    - C++ 与 QML 集成
+    - 文本处理
+
+14. **NotesApp** - SQLite 数据库应用 🆕
+    - 数据库设计
+    - CRUD 操作
+    - 数据持久化
+    - 搜索功能
 
 ### 实战技巧
 - 查看 `Main.qml` 了解动态路由实现
 - 研究 `ExamplesConfig.qml` 配置驱动
 - 阅读组件文件夹了解组件化设计
 - 阅读 `Backend.cpp` 理解 C++ 集成
-- 查看 `AudioPlayer.qml` 学习多媒体应用 🆕
-- 研究播放速度控制的实现细节 🆕
+- 查看 `AudioPlayer.qml` 学习多媒体应用
+- 研究播放速度控制的实现细节
+- 学习 `NetworkManager.cpp` 网络请求实现 🆕
+- 研究 `FileManager.cpp` 文件操作封装 🆕
+- 查看 `NoteDatabase.cpp` SQLite 数据库使用 🆕
+- 学习 `MarkdownConverter.cpp` 文本处理 🆕
 
 ## 扩展资源
 
@@ -726,18 +1034,75 @@ MediaPlayer {
 - [Qt 6 Documentation](https://doc.qt.io/qt-6/)
 - [QML Reference](https://doc.qt.io/qt-6/qmlreference.html)
 - [Qt Quick Controls](https://doc.qt.io/qt-6/qtquickcontrols-index.html)
-- [Qt Multimedia](https://doc.qt.io/qt-6/qtmultimedia-index.html) 🆕
-- [MediaPlayer QML Type](https://doc.qt.io/qt-6/qml-qtmultimedia-mediaplayer.html) 🆕
+- [Qt Multimedia](https://doc.qt.io/qt-6/qtmultimedia-index.html)
+- [MediaPlayer QML Type](https://doc.qt.io/qt-6/qml-qtmultimedia-mediaplayer.html)
+- [Qt Network](https://doc.qt.io/qt-6/qtnetwork-index.html) 🆕
+- [QNetworkAccessManager](https://doc.qt.io/qt-6/qnetworkaccessmanager.html) 🆕
+- [Qt SQL](https://doc.qt.io/qt-6/qtsql-index.html) 🆕
+- [QSqlDatabase](https://doc.qt.io/qt-6/qsqldatabase.html) 🆕
+- [FileDialog QML Type](https://doc.qt.io/qt-6/qml-qtquick-dialogs-filedialog.html) 🆕
 
 ### 推荐阅读
 - Qt Quick 最佳实践
 - QML 性能优化指南
 - Qt 信号槽机制详解
-- Qt Multimedia 音频播放指南 🆕
+- Qt Multimedia 音频播放指南
+- Qt Network 编程指南 🆕
+- Qt SQL 数据库编程 🆕
+- Qt 文件系统操作 🆕
 
 ## 版本历史
 
-### v2.1.0 (当前版本) 🆕
+### v3.0.0 (当前版本) 🆕
+**发布日期**: 2024-04-28
+
+**新增功能**:
+- ✅ 新增网络请求示例（NetworkRequests.qml）
+  - C++ NetworkManager 实现（推荐）
+  - XMLHttpRequest 纯 QML 版本
+  - HTTP GET/POST 请求
+  - JSON 数据解析和格式化输出
+  - 进度显示和错误处理
+- ✅ 新增 ListView 高级用法示例（ListViewAdvanced.qml）
+  - 分组显示（section.property）
+  - 搜索过滤功能
+  - 滑动删除（SwipeDelegate）
+  - 自定义委托样式
+- ✅ 新增文件操作示例（FileOperations.qml）
+  - 文件打开/保存/另存为/删除
+  - FileDialog 文件选择
+  - 快速模板（TODO、会议、日记）
+  - 文件信息显示
+  - 实时统计（字数、行数）
+- ✅ 新增 Markdown 编辑器（MarkdownEditor.qml）
+  - 实时预览
+  - Markdown → HTML 转换
+  - 文件保存/加载
+- ✅ 新增 SQLite 笔记应用（NotesApp.qml）
+  - 完整的 CRUD 操作
+  - 数据持久化
+  - 搜索功能
+
+**技术改进**:
+- 添加 Qt Network 模块依赖
+- 添加 Qt SQL 模块依赖
+- 新增 4 个 C++ 类：
+  - NetworkManager - 网络请求管理
+  - FileManager - 文件操作管理
+  - MarkdownConverter - Markdown 转换
+  - NoteDatabase - SQLite 数据库
+- 完善的错误处理和状态管理
+- 控制台 JSON 格式化输出
+
+**代码统计**:
+- 新增 ~800 行 QML 代码
+- 新增 ~600 行 C++ 代码
+- 总计 14 个示例
+- 40+ 可复用组件
+- ~2,500+ 行 QML 代码
+- 6 个 C++ 类
+
+### v2.1.0
 **发布日期**: 2024-04-24
 
 **新增功能**:
